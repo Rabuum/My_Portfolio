@@ -81,14 +81,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Academic portfolio of Rabin Giri, Civil Engineer from Nepal preparing for a Master's in Water Resources Engineering in Germany. Research, projects, and technical expertise.",
+          "Academic portfolio of Rabin Giri, a Civil Engineer from Nepal preparing for a Master's in Water Resources Engineering in Germany. Research, technical expertise, and career vision.",
       },
       { name: "author", content: "Rabin Giri" },
       { name: "keywords", content: "Rabin Giri, Civil Engineer, Water Resources Engineering, Nepal, Germany Master's, DAAD, Hydrology, Hydraulic Engineering, Self-Healing Concrete" },
       { property: "og:title", content: "Rabin Giri — Civil Engineer · Water Resources Researcher" },
-      { property: "og:description", content: "Academic portfolio for Master's admissions in Germany and international engineering opportunities." },
+      { property: "og:description", content: "Academic portfolio of Rabin Giri, a Civil Engineer from Nepal preparing for a Master's in Water Resources Engineering in Germany. Research, technical expertise, and career vision." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Rabin Giri — Civil Engineer · Water Resources Researcher" },
+      { name: "twitter:description", content: "Academic portfolio of Rabin Giri, a Civil Engineer from Nepal preparing for a Master's in Water Resources Engineering in Germany. Research, technical expertise, and career vision." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5b6a1275-815c-4004-9cc1-7bc42214c84e/id-preview-b86dcfb2--11d31358-e68e-4e10-a5d7-6fdddb946030.lovable.app-1784388679200.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5b6a1275-815c-4004-9cc1-7bc42214c84e/id-preview-b86dcfb2--11d31358-e68e-4e10-a5d7-6fdddb946030.lovable.app-1784388679200.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
