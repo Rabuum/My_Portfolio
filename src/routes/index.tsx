@@ -825,14 +825,14 @@ function Footer() {
               className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-4 w-4" />
+              <Globe className="h-4 w-4" />
             </a>
             <a
               href="#"
               className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
-              aria-label="GitHub"
+              aria-label="ResearchGate"
             >
-              <Github className="h-4 w-4" />
+              <ExternalLink className="h-4 w-4" />
             </a>
           </div>
         </div>
