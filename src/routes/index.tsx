@@ -12,8 +12,8 @@ import {
   Waves,
   Compass,
   FileText,
-  Github,
-  Linkedin,
+  Globe,
+  Linkedin2 as Linkedin,
   Sparkles,
   ChevronRight,
 } from "lucide-react";
