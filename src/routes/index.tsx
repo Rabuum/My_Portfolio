@@ -13,7 +13,7 @@ import {
   Compass,
   FileText,
   Globe,
-  Linkedin2 as Linkedin,
+  ExternalLink,
   Sparkles,
   ChevronRight,
 } from "lucide-react";
