@@ -769,7 +769,7 @@ function Contact() {
 
           <Reveal delay={0.1} className="md:col-span-6">
             <div className="grid gap-4 sm:grid-cols-2">
-              <ContactCard icon={Mail} label="Email" value="rabin.giri@example.com" />
+              <ContactCard icon={Mail} label="Email" value="rabingiri456@gmail.com" />
               <ContactCard icon={Phone} label="Phone" value="+977 · on request" />
               <ContactCard icon={MapPin} label="Location" value="Pokhara, Nepal" />
               <ContactCard icon={FileText} label="Dossier" value="Available on request" />
