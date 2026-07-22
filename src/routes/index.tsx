@@ -13,6 +13,7 @@ import {
   Compass,
   FileText,
   Globe,
+  Linkedin,
   ExternalLink,
   Sparkles,
   ChevronRight,
