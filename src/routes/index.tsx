@@ -816,14 +816,16 @@ function Footer() {
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="mailto:rabin.giri@example.com"
+              href="mailto:rabingiri456@gmail.com"
               className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
               aria-label="Email"
             >
               <Mail className="h-4 w-4" />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/rabin-giri-076240363/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
               aria-label="LinkedIn"
             >
