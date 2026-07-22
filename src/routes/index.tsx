@@ -749,7 +749,7 @@ function Contact() {
 
             <div className="mt-10 flex flex-wrap gap-3">
               <a
-                href="mailto:rabin.giri@example.com"
+                href="mailto:rabingiri456@gmail.com"
                 className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
               >
                 <Mail className="h-4 w-4" />
@@ -757,7 +757,8 @@ function Contact() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a
-                href="#"
+                href="/Rabin_Giri_Resume.pdf"
+                download
                 className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
               >
                 <Download className="h-4 w-4" />
