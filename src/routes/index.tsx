@@ -724,6 +724,18 @@ function Vision() {
 /* ---------------------------- contact ---------------------------- */
 
 function Contact() {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleEmailClick = async () => {
+    try {
+      await navigator.clipboard.writeText("rabingiri456@gmail.com");
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch {
+      // Clipboard API unavailable; mailto href still opens the default client.
+    }
+  };
+
   return (
     <section id="contact" className="scroll-mt-24 border-t border-hairline py-28 md:py-40">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -750,10 +762,11 @@ function Contact() {
             <div className="mt-10 flex flex-wrap gap-3">
               <a
                 href="mailto:rabingiri456@gmail.com"
+                onClick={handleEmailClick}
                 className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
               >
                 <Mail className="h-4 w-4" />
-                Email Rabin
+                {emailCopied ? "Copied email" : "Email Rabin"}
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a
@@ -843,9 +856,6 @@ function Footer() {
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-hairline pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} Rabin Giri. All rights reserved.</div>
-          <div className="font-mono uppercase tracking-widest">
-            Designed with intent · Built for Master's admissions
-          </div>
         </div>
       </div>
     </footer>
