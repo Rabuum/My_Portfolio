@@ -295,7 +295,8 @@ function Hero() {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
-              href="#contact"
+              href="/Rabin_Giri_Resume.pdf"
+              download
               className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
             >
               <Download className="h-4 w-4" />
@@ -748,7 +749,7 @@ function Contact() {
 
             <div className="mt-10 flex flex-wrap gap-3">
               <a
-                href="mailto:rabin.giri@example.com"
+                href="mailto:rabingiri456@gmail.com"
                 className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
               >
                 <Mail className="h-4 w-4" />
@@ -756,7 +757,8 @@ function Contact() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a
-                href="#"
+                href="/Rabin_Giri_Resume.pdf"
+                download
                 className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
               >
                 <Download className="h-4 w-4" />
@@ -767,7 +769,7 @@ function Contact() {
 
           <Reveal delay={0.1} className="md:col-span-6">
             <div className="grid gap-4 sm:grid-cols-2">
-              <ContactCard icon={Mail} label="Email" value="rabin.giri@example.com" />
+              <ContactCard icon={Mail} label="Email" value="rabingiri456@gmail.com" />
               <ContactCard icon={Phone} label="Phone" value="+977 · on request" />
               <ContactCard icon={MapPin} label="Location" value="Pokhara, Nepal" />
               <ContactCard icon={FileText} label="Dossier" value="Available on request" />
@@ -814,14 +816,16 @@ function Footer() {
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="mailto:rabin.giri@example.com"
+              href="mailto:rabingiri456@gmail.com"
               className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
               aria-label="Email"
             >
               <Mail className="h-4 w-4" />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/rabin-giri-076240363/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
               aria-label="LinkedIn"
             >
