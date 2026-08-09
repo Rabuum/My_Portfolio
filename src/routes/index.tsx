@@ -817,6 +817,23 @@ function Vision() {
           <SectionLabel index="06">Career Vision</SectionLabel>
         </Reveal>
 
+        <Reveal delay={0.05}>
+          <figure className="mt-10 overflow-hidden rounded-2xl border border-hairline">
+            <img
+              src={riverImg}
+              alt="Braided Himalayan river flowing through a wide gravel valley in Nepal"
+              loading="lazy"
+              width={1600}
+              height={1008}
+              className="h-[240px] w-full object-cover md:h-[420px]"
+            />
+            <figcaption className="border-t border-hairline px-5 py-3 text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
+              Braided river channels in the Nepali highlands — the systems I want to work on
+            </figcaption>
+          </figure>
+        </Reveal>
+
+
         <div className="mt-12 grid gap-16 md:grid-cols-12">
           <Reveal className="md:col-span-7">
             <h2 className="font-serif text-4xl leading-[1.05] text-ink md:text-6xl">
