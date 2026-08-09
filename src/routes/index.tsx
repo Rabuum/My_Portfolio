@@ -581,54 +581,76 @@ function Research() {
 
         <Reveal>
           <h2 className="mt-8 max-w-3xl font-serif text-4xl leading-[1.05] text-ink md:text-6xl">
-            Where laboratory work meets
-            <em className="italic text-ink-soft"> real-world</em> engineering.
+            The work I'm proudest of, and what it
+            <em className="italic text-ink-soft"> taught me</em>.
           </h2>
         </Reveal>
 
         <div className="mt-16 grid gap-8 md:grid-cols-12">
-          {/* Featured research */}
-          <motion.article
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="group relative overflow-hidden rounded-2xl border border-hairline bg-card p-8 md:col-span-8 md:p-14"
-          >
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-              <Beaker className="h-4 w-4" />
-              Undergraduate thesis · Featured
-            </div>
-            <h3 className="mt-6 font-serif text-3xl leading-tight text-ink md:text-5xl">
-              Self-Healing Concrete Using Different Healing Agents
-            </h3>
-            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-soft md:text-base">
-              A laboratory investigation comparing multiple healing agents for their ability
-              to autonomously repair micro-cracks in concrete. The study evaluated
-              compressive strength recovery, crack-healing efficiency, and long-term
-              durability implications — combining experimental design, quantitative
-              analysis, and formal technical reporting.
-            </p>
-
-            <div className="mt-10 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
-              {[
-                { k: "Method", v: "Comparative experimental study" },
-                { k: "Testing", v: "Compressive strength & crack analysis" },
-                { k: "Outputs", v: "Thesis, technical report, presentation" },
-                { k: "Skills", v: "Lab work · data analysis · scientific writing" },
-              ].map((r) => (
-                <div key={r.k}>
-                  <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                    {r.k}
-                  </div>
-                  <div className="mt-1 text-[15px] text-ink">{r.v}</div>
+          {/* Featured projects */}
+          <div className="space-y-8 md:col-span-8">
+            {PROJECTS.map((p, idx) => (
+              <motion.article
+                key={p.title}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: idx * 0.05 }}
+                className="group relative overflow-hidden rounded-2xl border border-hairline bg-card p-8 md:p-14"
+              >
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                  <span className="flex items-center gap-3">
+                    <Beaker className="h-4 w-4" />
+                    {p.kind}
+                  </span>
+                  <span className="font-mono">{p.year}</span>
                 </div>
-              ))}
-            </div>
+                <h3 className="mt-6 font-serif text-3xl leading-tight text-ink md:text-[2.9rem]">
+                  {p.title}
+                </h3>
+                <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-soft md:text-base">
+                  {p.summary}
+                </p>
 
-            <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border border-hairline" />
-            <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full border border-hairline" />
-          </motion.article>
+                <div className="mt-10 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
+                  {p.meta.map((r) => (
+                    <div key={r.k}>
+                      <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                        {r.k}
+                      </div>
+                      <div className="mt-1 text-[15px] text-ink">{r.v}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {p.links.length > 0 && (
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    {p.links.map((l) => (
+                      <a
+                        key={l.label}
+                        href={l.href}
+                        target={l.href.startsWith("http") ? "_blank" : undefined}
+                        rel={l.href.startsWith("http") ? "noreferrer" : undefined}
+                        className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-[13px] font-medium text-ink transition-colors hover:bg-muted"
+                      >
+                        {l.href.startsWith("http") ? (
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        ) : (
+                          <FileText className="h-3.5 w-3.5" />
+                        )}
+                        {l.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border border-hairline" />
+                <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full border border-hairline" />
+              </motion.article>
+            ))}
+          </div>
+
 
           {/* Interests / applied areas */}
           <div className="grid gap-6 md:col-span-4">
