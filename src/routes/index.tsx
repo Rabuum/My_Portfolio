@@ -451,25 +451,27 @@ function About() {
         <div className="mt-10 grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-7">
             <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-              A research-minded engineer with a
-              <em className="italic text-ink-soft"> long-horizon</em> vision for
-              sustainable water systems.
+              An engineer who likes hard questions —
+              <em className="italic text-ink-soft"> and the patience</em> that answering
+              them takes.
             </h2>
           </Reveal>
 
           <Reveal delay={0.1} className="space-y-6 md:col-span-5">
             <p className="text-base leading-relaxed text-ink-soft md:text-[17px]">
-              My academic journey has been guided by a single question: how can engineering
-              respond meaningfully to the water challenges facing communities like mine in
-              Nepal? Every course, project, and lab has strengthened my conviction that
-              rigorous research must sit at the heart of that answer.
+              I studied Civil Engineering at Nepal Engineering College and finished with a
+              CGPA of 3.41. What stayed with me most were the water subjects: hydrology,
+              hydraulics, irrigation, water supply. They connect directly to problems I've
+              watched play out at home — monsoon floods, drying springs, irrigation canals
+              that never quite reach the last field.
             </p>
             <p className="text-base leading-relaxed text-ink-soft md:text-[17px]">
-              I am now preparing to pursue a Master's in Water Resources Engineering in
-              Germany — a country whose research culture, technical rigour, and commitment
-              to sustainability align closely with my long-term goals in hydrology, flood
-              management, and climate-resilient infrastructure.
+              My final-year research on self-healing concrete taught me how slow and honest
+              real engineering work is: build the specimens, run the tests, let the data
+              disagree with you. That's the habit I want to carry into a Master's in Water
+              Resources Engineering in Germany — and then bring back home.
             </p>
+
             <div className="grid grid-cols-2 gap-4 pt-4">
               <Fact label="Based in" value="Pokhara, Nepal" />
               <Fact label="Discipline" value="Civil Engineering" />
