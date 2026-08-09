@@ -240,81 +240,130 @@ function Nav() {
 
 /* ----------------------------- hero ----------------------------- */
 
+function Portrait() {
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.97 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+      className="relative mx-auto w-full max-w-sm md:max-w-none"
+    >
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-hairline bg-secondary/60">
+        {!failed ? (
+          <img
+            src="/rabin.jpg"
+            alt="Portrait of Rabin Giri, Civil Engineer"
+            onError={() => setFailed(true)}
+            className="h-full w-full object-cover object-center transition-transform duration-[1.2s] hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+            <span className="font-serif text-6xl text-ink-soft">RG</span>
+            <span className="px-8 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              Portrait
+            </span>
+          </div>
+        )}
+        <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-black/5" />
+      </div>
+
+      <div className="absolute -bottom-5 left-4 right-4 rounded-2xl border border-hairline bg-background/90 px-5 py-4 backdrop-blur-xl">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+          Civil Engineer · Pokhara, Nepal
+        </div>
+        <div className="mt-1 text-sm text-ink">
+          B.E. Civil Engineering — CGPA 3.41 / 4.00
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
+    <section id="top" className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-40" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-ink" />
-          </span>
-          Preparing for Master's admissions · Intake 2025 / 26
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl font-serif text-[13vw] leading-[0.95] tracking-[-0.03em] text-ink text-balance sm:text-[10vw] md:text-[8.4vw] lg:text-[7.6rem]"
-        >
-          Civil engineer <br />
-          shaping <em className="italic text-ink-soft">resilient water</em>{" "}
-          <span className="whitespace-nowrap">futures.</span>
-        </motion.h1>
-
-        <div className="mt-14 grid gap-10 border-t border-hairline pt-10 md:grid-cols-[1fr_auto] md:items-end">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="max-w-xl text-base leading-relaxed text-ink-soft md:text-lg"
-          >
-            I'm <span className="text-ink">Rabin Giri</span> — a Civil Engineer from Nepal focused on
-            hydrology, hydraulic engineering and sustainable water resource management. I'm
-            preparing for a Master's degree in Germany to advance research on climate-resilient
-            infrastructure and river systems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.7 }}
-            className="flex flex-wrap items-center gap-3"
-          >
-            <a
-              href="#research"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
+        <div className="grid items-center gap-16 md:grid-cols-12 md:gap-12">
+          <div className="md:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground"
             >
-              View research
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href="/Rabin_Giri_Resume.pdf"
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-40" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-ink" />
+              </span>
+              Applying for Master's studies in Germany
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-[12vw] leading-[0.98] tracking-[-0.03em] text-ink text-balance sm:text-[9vw] md:text-[5.6vw] lg:text-[5.2rem]"
             >
-              <Download className="h-4 w-4" />
-              Resume
-            </a>
-          </motion.div>
+              Rabin Giri
+              <span className="mt-3 block font-serif text-[7vw] leading-[1.05] text-ink-soft sm:text-[5vw] md:text-[3vw] lg:text-[2.6rem]">
+                Civil engineer working on <em className="italic text-ink">water</em>.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="mt-8 max-w-xl text-base leading-relaxed text-ink-soft md:text-[17px]"
+            >
+              I grew up around rivers that give and take in equal measure — and that is
+              what pulled me into civil engineering. Today I work on hydrology, hydraulics
+              and water resource management, and I'm preparing for a Master's degree in
+              Germany so I can come back with the depth needed to make Nepal's water
+              infrastructure safer and more sustainable.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.7 }}
+              className="mt-10 flex flex-wrap items-center gap-3"
+            >
+              <a
+                href="#research"
+                className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
+              >
+                View my work
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href={CV_URL}
+                download="Rabin-Giri-CV.pdf"
+                className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
+              >
+                <Download className="h-4 w-4" />
+                Download CV
+              </a>
+            </motion.div>
+          </div>
+
+          <div className="md:col-span-5">
+            <Portrait />
+          </div>
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-20 grid gap-6 border-t border-hairline pt-10 sm:grid-cols-2 md:grid-cols-4"
+          className="mt-28 grid gap-6 border-t border-hairline pt-10 sm:grid-cols-2 md:grid-cols-4"
         >
           {[
             { k: "3.41 / 4.0", v: "Undergraduate CGPA" },
             { k: "4 yrs", v: "B.E. Civil Engineering" },
-            { k: "1", v: "Research thesis published" },
+            { k: "1", v: "Research thesis completed" },
             { k: "Germany", v: "Target for Master's" },
           ].map((s) => (
             <div key={s.v}>
@@ -329,6 +378,7 @@ function Hero() {
     </section>
   );
 }
+
 
 /* --------------------------- marquee --------------------------- */
 
