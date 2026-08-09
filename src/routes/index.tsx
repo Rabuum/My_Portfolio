@@ -273,6 +273,12 @@ function Nav() {
 
 function Portrait() {
   const [failed, setFailed] = useState(false);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    const el = imgRef.current;
+    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+  }, []);
 
   return (
     <motion.div
@@ -284,6 +290,7 @@ function Portrait() {
       <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-hairline bg-secondary/60">
         {!failed ? (
           <img
+            ref={imgRef}
             src="/rabin.jpg"
             alt="Portrait of Rabin Giri, Civil Engineer"
             onError={() => setFailed(true)}
@@ -297,6 +304,7 @@ function Portrait() {
             </span>
           </div>
         )}
+
         <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-black/5" />
       </div>
 
