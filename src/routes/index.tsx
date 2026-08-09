@@ -271,14 +271,18 @@ function Nav() {
 
 /* ----------------------------- hero ----------------------------- */
 
+const PORTRAIT_SRC = "/rabin.jpg";
+
 function Portrait() {
-  const [failed, setFailed] = useState(false);
-  const imgRef = useRef<HTMLImageElement | null>(null);
+  const [status, setStatus] = useState<"loading" | "ok" | "missing">("loading");
 
   useEffect(() => {
-    const el = imgRef.current;
-    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+    const probe = new Image();
+    probe.onload = () => setStatus("ok");
+    probe.onerror = () => setStatus("missing");
+    probe.src = PORTRAIT_SRC;
   }, []);
+
 
   return (
     <motion.div
