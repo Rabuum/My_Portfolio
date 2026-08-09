@@ -292,12 +292,10 @@ function Portrait() {
       className="relative mx-auto w-full max-w-sm md:max-w-none"
     >
       <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-hairline bg-secondary/60">
-        {!failed ? (
+        {status === "ok" ? (
           <img
-            ref={imgRef}
-            src="/rabin.jpg"
+            src={PORTRAIT_SRC}
             alt="Portrait of Rabin Giri, Civil Engineer"
-            onError={() => setFailed(true)}
             className="h-full w-full object-cover object-center transition-transform duration-[1.2s] hover:scale-[1.03]"
           />
         ) : (
@@ -308,6 +306,7 @@ function Portrait() {
             </span>
           </div>
         )}
+
 
         <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-black/5" />
       </div>
