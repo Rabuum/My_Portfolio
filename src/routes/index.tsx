@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import riverImg from "@/assets/river.jpg";
+import concreteImg from "@/assets/concrete.jpg";
+import watershedImg from "@/assets/watershed.jpg";
 import {
   ArrowUpRight,
   Mail,
