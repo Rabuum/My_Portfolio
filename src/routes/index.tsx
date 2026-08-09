@@ -34,6 +34,37 @@ export const Route = createFileRoute("/")({
 
 /* ------------------------------- data ------------------------------- */
 
+const CV_URL = "/Rabin_Giri_Resume.pdf";
+const EMAIL = "rabingiri456@gmail.com";
+
+type ProjectLink = { label: string; href: string };
+
+const PROJECTS: {
+  title: string;
+  kind: string;
+  year: string;
+  summary: string;
+  meta: { k: string; v: string }[];
+  links: ProjectLink[];
+}[] = [
+  {
+    title: "Self-Healing Concrete Using Different Healing Agents",
+    kind: "Undergraduate thesis · Featured",
+    year: "2023 — 2024",
+    summary:
+      "For my final-year research I wanted to know whether concrete could repair its own cracks well enough to matter in practice. I cast and cured specimens with several healing agents, cracked them under load, and then tracked how much compressive strength each mix recovered over time — comparing healing efficiency, durability implications, and cost realism side by side.",
+    meta: [
+      { k: "Method", v: "Comparative laboratory experiment" },
+      { k: "Testing", v: "Compressive strength & crack-healing analysis" },
+      { k: "Outputs", v: "Thesis, technical report, defence presentation" },
+      { k: "Skills", v: "Lab work · data analysis · scientific writing" },
+    ],
+    links: [{ label: "Request full thesis", href: `mailto:${EMAIL}?subject=Request%20for%20thesis%20—%20Self-Healing%20Concrete` }],
+  },
+];
+
+
+
 const NAV = [
   { id: "about", label: "About" },
   { id: "academic", label: "Academic" },
