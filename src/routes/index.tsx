@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import riverImg from "@/assets/river.jpg";
+import concreteImg from "@/assets/concrete.jpg";
+import watershedImg from "@/assets/watershed.jpg";
 import {
   ArrowUpRight,
   Mail,
@@ -626,6 +629,23 @@ function Research() {
                   {p.summary}
                 </p>
 
+                {idx === 0 && (
+                  <figure className="mt-10 overflow-hidden rounded-xl border border-hairline bg-secondary/40">
+                    <img
+                      src={concreteImg}
+                      alt="Cracked concrete cube specimen beside a compression testing machine"
+                      loading="lazy"
+                      width={1408}
+                      height={1008}
+                      className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.02]"
+                    />
+                    <figcaption className="border-t border-hairline px-5 py-3 text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
+                      Cube specimens after loading — crack width and strength recovery tracked over curing cycles
+                    </figcaption>
+                  </figure>
+                )}
+
+
                 <div className="mt-10 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
                   {p.meta.map((r) => (
                     <div key={r.k}>
@@ -719,7 +739,21 @@ function Skills() {
               watersheds in ArcGIS to structural modelling in ETABS. Together they support
               a research-driven approach to water resources engineering.
             </p>
+            <figure className="mt-10 overflow-hidden rounded-xl border border-hairline bg-paper">
+              <img
+                src={watershedImg}
+                alt="Contour and drainage network map of a river catchment"
+                loading="lazy"
+                width={1408}
+                height={1008}
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="border-t border-hairline px-5 py-3 text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
+                Catchment delineation & stream network — the kind of GIS analysis behind flood and irrigation planning
+              </figcaption>
+            </figure>
           </Reveal>
+
 
           <motion.div
             variants={stagger}
@@ -782,6 +816,23 @@ function Vision() {
         <Reveal>
           <SectionLabel index="06">Career Vision</SectionLabel>
         </Reveal>
+
+        <Reveal delay={0.05}>
+          <figure className="mt-10 overflow-hidden rounded-2xl border border-hairline">
+            <img
+              src={riverImg}
+              alt="Braided Himalayan river flowing through a wide gravel valley in Nepal"
+              loading="lazy"
+              width={1600}
+              height={1008}
+              className="h-[240px] w-full object-cover md:h-[420px]"
+            />
+            <figcaption className="border-t border-hairline px-5 py-3 text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
+              Braided river channels in the Nepali highlands — the systems I want to work on
+            </figcaption>
+          </figure>
+        </Reveal>
+
 
         <div className="mt-12 grid gap-16 md:grid-cols-12">
           <Reveal className="md:col-span-7">
