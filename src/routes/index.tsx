@@ -629,6 +629,23 @@ function Research() {
                   {p.summary}
                 </p>
 
+                {idx === 0 && (
+                  <figure className="mt-10 overflow-hidden rounded-xl border border-hairline bg-secondary/40">
+                    <img
+                      src={concreteImg}
+                      alt="Cracked concrete cube specimen beside a compression testing machine"
+                      loading="lazy"
+                      width={1408}
+                      height={1008}
+                      className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.02]"
+                    />
+                    <figcaption className="border-t border-hairline px-5 py-3 text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
+                      Cube specimens after loading — crack width and strength recovery tracked over curing cycles
+                    </figcaption>
+                  </figure>
+                )}
+
+
                 <div className="mt-10 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
                   {p.meta.map((r) => (
                     <div key={r.k}>
