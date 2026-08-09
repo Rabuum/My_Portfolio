@@ -739,7 +739,21 @@ function Skills() {
               watersheds in ArcGIS to structural modelling in ETABS. Together they support
               a research-driven approach to water resources engineering.
             </p>
+            <figure className="mt-10 overflow-hidden rounded-xl border border-hairline bg-paper">
+              <img
+                src={watershedImg}
+                alt="Contour and drainage network map of a river catchment"
+                loading="lazy"
+                width={1408}
+                height={1008}
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="border-t border-hairline px-5 py-3 text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
+                Catchment delineation & stream network — the kind of GIS analysis behind flood and irrigation planning
+              </figcaption>
+            </figure>
           </Reveal>
+
 
           <motion.div
             variants={stagger}
