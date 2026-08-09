@@ -782,15 +782,16 @@ function Vision() {
 
           <Reveal delay={0.1} className="space-y-6 md:col-span-5">
             <p className="text-[17px] leading-relaxed text-ink-soft">
-              My immediate goal is to pursue a Master's degree in Water Resources
-              Engineering in Germany, engaging with world-class research on hydrology,
-              hydraulics and climate-adaptive design.
+              The next step is a Master's in Water Resources Engineering in Germany. I want
+              to study where hydrology and hydraulics are taught alongside real field data,
+              and where research is expected to end up in practice rather than on a shelf.
             </p>
             <p className="text-[17px] leading-relaxed text-ink-soft">
-              My long-term commitment is to bring that expertise home — advancing flood
-              management, river engineering, irrigation and resilient infrastructure that
-              serve Nepal's communities and its fragile Himalayan ecosystems.
+              After that, I plan to work on the problems I know best: flood risk along
+              Nepal's rivers, irrigation that actually reaches farmers, and infrastructure
+              built for a climate that is already changing.
             </p>
+
           </Reveal>
         </div>
 
