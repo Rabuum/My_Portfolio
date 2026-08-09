@@ -34,6 +34,37 @@ export const Route = createFileRoute("/")({
 
 /* ------------------------------- data ------------------------------- */
 
+const CV_URL = "/Rabin_Giri_Resume.pdf";
+const EMAIL = "rabingiri456@gmail.com";
+
+type ProjectLink = { label: string; href: string };
+
+const PROJECTS: {
+  title: string;
+  kind: string;
+  year: string;
+  summary: string;
+  meta: { k: string; v: string }[];
+  links: ProjectLink[];
+}[] = [
+  {
+    title: "Self-Healing Concrete Using Different Healing Agents",
+    kind: "Undergraduate thesis · Featured",
+    year: "2023 — 2024",
+    summary:
+      "For my final-year research I wanted to know whether concrete could repair its own cracks well enough to matter in practice. I cast and cured specimens with several healing agents, cracked them under load, and then tracked how much compressive strength each mix recovered over time — comparing healing efficiency, durability implications, and cost realism side by side.",
+    meta: [
+      { k: "Method", v: "Comparative laboratory experiment" },
+      { k: "Testing", v: "Compressive strength & crack-healing analysis" },
+      { k: "Outputs", v: "Thesis, technical report, defence presentation" },
+      { k: "Skills", v: "Lab work · data analysis · scientific writing" },
+    ],
+    links: [{ label: "Request full thesis", href: `mailto:${EMAIL}?subject=Request%20for%20thesis%20—%20Self-Healing%20Concrete` }],
+  },
+];
+
+
+
 const NAV = [
   { id: "about", label: "About" },
   { id: "academic", label: "Academic" },
@@ -240,81 +271,141 @@ function Nav() {
 
 /* ----------------------------- hero ----------------------------- */
 
+const PORTRAIT_SRC = "/rabin.jpg";
+
+function Portrait() {
+  const [status, setStatus] = useState<"loading" | "ok" | "missing">("loading");
+
+  useEffect(() => {
+    const probe = new Image();
+    probe.onload = () => setStatus("ok");
+    probe.onerror = () => setStatus("missing");
+    probe.src = PORTRAIT_SRC;
+  }, []);
+
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.97 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+      className="relative mx-auto w-full max-w-sm md:max-w-none"
+    >
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-hairline bg-secondary/60">
+        {status === "ok" ? (
+          <img
+            src={PORTRAIT_SRC}
+            alt="Portrait of Rabin Giri, Civil Engineer"
+            className="h-full w-full object-cover object-center transition-transform duration-[1.2s] hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+            <span className="font-serif text-6xl text-ink-soft">RG</span>
+            <span className="px-8 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              Portrait
+            </span>
+          </div>
+        )}
+
+
+        <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-black/5" />
+      </div>
+
+      <div className="absolute -bottom-5 left-4 right-4 rounded-2xl border border-hairline bg-background/90 px-5 py-4 backdrop-blur-xl">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+          Civil Engineer · Pokhara, Nepal
+        </div>
+        <div className="mt-1 text-sm text-ink">
+          B.E. Civil Engineering — CGPA 3.41 / 4.00
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
+    <section id="top" className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-40" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-ink" />
-          </span>
-          Preparing for Master's admissions · Intake 2025 / 26
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl font-serif text-[13vw] leading-[0.95] tracking-[-0.03em] text-ink text-balance sm:text-[10vw] md:text-[8.4vw] lg:text-[7.6rem]"
-        >
-          Civil engineer <br />
-          shaping <em className="italic text-ink-soft">resilient water</em>{" "}
-          <span className="whitespace-nowrap">futures.</span>
-        </motion.h1>
-
-        <div className="mt-14 grid gap-10 border-t border-hairline pt-10 md:grid-cols-[1fr_auto] md:items-end">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="max-w-xl text-base leading-relaxed text-ink-soft md:text-lg"
-          >
-            I'm <span className="text-ink">Rabin Giri</span> — a Civil Engineer from Nepal focused on
-            hydrology, hydraulic engineering and sustainable water resource management. I'm
-            preparing for a Master's degree in Germany to advance research on climate-resilient
-            infrastructure and river systems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.7 }}
-            className="flex flex-wrap items-center gap-3"
-          >
-            <a
-              href="#research"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
+        <div className="grid items-center gap-16 md:grid-cols-12 md:gap-12">
+          <div className="md:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground"
             >
-              View research
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href="/Rabin_Giri_Resume.pdf"
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-40" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-ink" />
+              </span>
+              Applying for Master's studies in Germany
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-[12vw] leading-[0.98] tracking-[-0.03em] text-ink text-balance sm:text-[9vw] md:text-[5.6vw] lg:text-[5.2rem]"
             >
-              <Download className="h-4 w-4" />
-              Resume
-            </a>
-          </motion.div>
+              Rabin Giri
+              <span className="mt-3 block font-serif text-[7vw] leading-[1.05] text-ink-soft sm:text-[5vw] md:text-[3vw] lg:text-[2.6rem]">
+                Civil engineer working on <em className="italic text-ink">water</em>.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="mt-8 max-w-xl text-base leading-relaxed text-ink-soft md:text-[17px]"
+            >
+              I grew up around rivers that give and take in equal measure — and that is
+              what pulled me into civil engineering. Today I work on hydrology, hydraulics
+              and water resource management, and I'm preparing for a Master's degree in
+              Germany so I can come back with the depth needed to make Nepal's water
+              infrastructure safer and more sustainable.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.7 }}
+              className="mt-10 flex flex-wrap items-center gap-3"
+            >
+              <a
+                href="#research"
+                className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
+              >
+                View my work
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href={CV_URL}
+                download="Rabin-Giri-CV.pdf"
+                className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
+              >
+                <Download className="h-4 w-4" />
+                Download CV
+              </a>
+            </motion.div>
+          </div>
+
+          <div className="md:col-span-5">
+            <Portrait />
+          </div>
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-20 grid gap-6 border-t border-hairline pt-10 sm:grid-cols-2 md:grid-cols-4"
+          className="mt-28 grid gap-6 border-t border-hairline pt-10 sm:grid-cols-2 md:grid-cols-4"
         >
           {[
             { k: "3.41 / 4.0", v: "Undergraduate CGPA" },
             { k: "4 yrs", v: "B.E. Civil Engineering" },
-            { k: "1", v: "Research thesis published" },
+            { k: "1", v: "Research thesis completed" },
             { k: "Germany", v: "Target for Master's" },
           ].map((s) => (
             <div key={s.v}>
@@ -329,6 +420,7 @@ function Hero() {
     </section>
   );
 }
+
 
 /* --------------------------- marquee --------------------------- */
 
@@ -370,25 +462,27 @@ function About() {
         <div className="mt-10 grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-7">
             <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-              A research-minded engineer with a
-              <em className="italic text-ink-soft"> long-horizon</em> vision for
-              sustainable water systems.
+              An engineer who likes hard questions —
+              <em className="italic text-ink-soft"> and the patience</em> that answering
+              them takes.
             </h2>
           </Reveal>
 
           <Reveal delay={0.1} className="space-y-6 md:col-span-5">
             <p className="text-base leading-relaxed text-ink-soft md:text-[17px]">
-              My academic journey has been guided by a single question: how can engineering
-              respond meaningfully to the water challenges facing communities like mine in
-              Nepal? Every course, project, and lab has strengthened my conviction that
-              rigorous research must sit at the heart of that answer.
+              I studied Civil Engineering at Nepal Engineering College and finished with a
+              CGPA of 3.41. What stayed with me most were the water subjects: hydrology,
+              hydraulics, irrigation, water supply. They connect directly to problems I've
+              watched play out at home — monsoon floods, drying springs, irrigation canals
+              that never quite reach the last field.
             </p>
             <p className="text-base leading-relaxed text-ink-soft md:text-[17px]">
-              I am now preparing to pursue a Master's in Water Resources Engineering in
-              Germany — a country whose research culture, technical rigour, and commitment
-              to sustainability align closely with my long-term goals in hydrology, flood
-              management, and climate-resilient infrastructure.
+              My final-year research on self-healing concrete taught me how slow and honest
+              real engineering work is: build the specimens, run the tests, let the data
+              disagree with you. That's the habit I want to carry into a Master's in Water
+              Resources Engineering in Germany — and then bring back home.
             </p>
+
             <div className="grid grid-cols-2 gap-4 pt-4">
               <Fact label="Based in" value="Pokhara, Nepal" />
               <Fact label="Discipline" value="Civil Engineering" />
@@ -500,54 +594,76 @@ function Research() {
 
         <Reveal>
           <h2 className="mt-8 max-w-3xl font-serif text-4xl leading-[1.05] text-ink md:text-6xl">
-            Where laboratory work meets
-            <em className="italic text-ink-soft"> real-world</em> engineering.
+            The work I'm proudest of, and what it
+            <em className="italic text-ink-soft"> taught me</em>.
           </h2>
         </Reveal>
 
         <div className="mt-16 grid gap-8 md:grid-cols-12">
-          {/* Featured research */}
-          <motion.article
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="group relative overflow-hidden rounded-2xl border border-hairline bg-card p-8 md:col-span-8 md:p-14"
-          >
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-              <Beaker className="h-4 w-4" />
-              Undergraduate thesis · Featured
-            </div>
-            <h3 className="mt-6 font-serif text-3xl leading-tight text-ink md:text-5xl">
-              Self-Healing Concrete Using Different Healing Agents
-            </h3>
-            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-soft md:text-base">
-              A laboratory investigation comparing multiple healing agents for their ability
-              to autonomously repair micro-cracks in concrete. The study evaluated
-              compressive strength recovery, crack-healing efficiency, and long-term
-              durability implications — combining experimental design, quantitative
-              analysis, and formal technical reporting.
-            </p>
-
-            <div className="mt-10 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
-              {[
-                { k: "Method", v: "Comparative experimental study" },
-                { k: "Testing", v: "Compressive strength & crack analysis" },
-                { k: "Outputs", v: "Thesis, technical report, presentation" },
-                { k: "Skills", v: "Lab work · data analysis · scientific writing" },
-              ].map((r) => (
-                <div key={r.k}>
-                  <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                    {r.k}
-                  </div>
-                  <div className="mt-1 text-[15px] text-ink">{r.v}</div>
+          {/* Featured projects */}
+          <div className="space-y-8 md:col-span-8">
+            {PROJECTS.map((p, idx) => (
+              <motion.article
+                key={p.title}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: idx * 0.05 }}
+                className="group relative overflow-hidden rounded-2xl border border-hairline bg-card p-8 md:p-14"
+              >
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                  <span className="flex items-center gap-3">
+                    <Beaker className="h-4 w-4" />
+                    {p.kind}
+                  </span>
+                  <span className="font-mono">{p.year}</span>
                 </div>
-              ))}
-            </div>
+                <h3 className="mt-6 font-serif text-3xl leading-tight text-ink md:text-[2.9rem]">
+                  {p.title}
+                </h3>
+                <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-soft md:text-base">
+                  {p.summary}
+                </p>
 
-            <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border border-hairline" />
-            <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full border border-hairline" />
-          </motion.article>
+                <div className="mt-10 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
+                  {p.meta.map((r) => (
+                    <div key={r.k}>
+                      <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                        {r.k}
+                      </div>
+                      <div className="mt-1 text-[15px] text-ink">{r.v}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {p.links.length > 0 && (
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    {p.links.map((l) => (
+                      <a
+                        key={l.label}
+                        href={l.href}
+                        target={l.href.startsWith("http") ? "_blank" : undefined}
+                        rel={l.href.startsWith("http") ? "noreferrer" : undefined}
+                        className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-[13px] font-medium text-ink transition-colors hover:bg-muted"
+                      >
+                        {l.href.startsWith("http") ? (
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        ) : (
+                          <FileText className="h-3.5 w-3.5" />
+                        )}
+                        {l.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border border-hairline" />
+                <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full border border-hairline" />
+              </motion.article>
+            ))}
+          </div>
+
 
           {/* Interests / applied areas */}
           <div className="grid gap-6 md:col-span-4">
@@ -677,15 +793,16 @@ function Vision() {
 
           <Reveal delay={0.1} className="space-y-6 md:col-span-5">
             <p className="text-[17px] leading-relaxed text-ink-soft">
-              My immediate goal is to pursue a Master's degree in Water Resources
-              Engineering in Germany, engaging with world-class research on hydrology,
-              hydraulics and climate-adaptive design.
+              The next step is a Master's in Water Resources Engineering in Germany. I want
+              to study where hydrology and hydraulics are taught alongside real field data,
+              and where research is expected to end up in practice rather than on a shelf.
             </p>
             <p className="text-[17px] leading-relaxed text-ink-soft">
-              My long-term commitment is to bring that expertise home — advancing flood
-              management, river engineering, irrigation and resilient infrastructure that
-              serve Nepal's communities and its fragile Himalayan ecosystems.
+              After that, I plan to work on the problems I know best: flood risk along
+              Nepal's rivers, irrigation that actually reaches farmers, and infrastructure
+              built for a climate that is already changing.
             </p>
+
           </Reveal>
         </div>
 
@@ -770,8 +887,9 @@ function Contact() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a
-                href="/Rabin_Giri_Resume.pdf"
-                download
+                href={CV_URL}
+                download="Rabin-Giri-CV.pdf"
+
                 className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
               >
                 <Download className="h-4 w-4" />
