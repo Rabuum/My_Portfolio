@@ -455,205 +455,65 @@ function FocusMarquee() {
 
 /* ---------------------------- about ---------------------------- */
 
-function BlueprintSketch({ className }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden
-      viewBox="0 0 600 420"
-      fill="none"
-      className={className}
-      stroke="currentColor"
-      strokeWidth="1"
-      vectorEffect="non-scaling-stroke"
-    >
-      {/* fine grid */}
-      <g opacity="0.5">
-        {Array.from({ length: 13 }).map((_, i) => (
-          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="420" />
-        ))}
-        {Array.from({ length: 10 }).map((_, i) => (
-          <line key={`h${i}`} x1="0" y1={i * 47} x2="600" y2={i * 47} />
-        ))}
-      </g>
-      {/* beam elevation */}
-      <rect x="60" y="150" width="480" height="70" />
-      <line x1="60" y1="165" x2="540" y2="165" />
-      <line x1="60" y1="205" x2="540" y2="205" />
-      {Array.from({ length: 16 }).map((_, i) => (
-        <line key={`s${i}`} x1={80 + i * 30} y1="150" x2={80 + i * 30} y2="220" />
-      ))}
-      {/* supports */}
-      <path d="M80 220 L60 260 L100 260 Z" />
-      <path d="M520 220 L500 260 L540 260 Z" />
-      <line x1="40" y1="260" x2="120" y2="260" />
-      <line x1="480" y1="260" x2="560" y2="260" />
-      {/* dimension line */}
-      <line x1="60" y1="300" x2="540" y2="300" />
-      <line x1="60" y1="290" x2="60" y2="310" />
-      <line x1="540" y1="290" x2="540" y2="310" />
-      {/* load arrows */}
-      {Array.from({ length: 9 }).map((_, i) => (
-        <path key={`a${i}`} d={`M${80 + i * 55} 100 L${80 + i * 55} 148 M${74 + i * 55} 138 L${80 + i * 55} 148 L${86 + i * 55} 138`} />
-      ))}
-      {/* contour arcs */}
-      <g opacity="0.8">
-        <path d="M0 380 C120 340 220 400 340 360 C440 328 520 372 600 344" />
-        <path d="M0 400 C120 362 220 418 340 380 C440 350 520 392 600 366" />
-      </g>
-      {/* crosshair */}
-      <g>
-        <circle cx="300" cy="185" r="22" />
-        <line x1="270" y1="185" x2="330" y2="185" />
-        <line x1="300" y1="155" x2="300" y2="215" />
-      </g>
-    </svg>
-  );
-}
-
-function Crosshair({ className }: { className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={cn("pointer-events-none absolute text-hairline select-none", className)}
-    >
-      <svg width="11" height="11" viewBox="0 0 11 11" stroke="currentColor" strokeWidth="1">
-        <line x1="5.5" y1="0" x2="5.5" y2="11" />
-        <line x1="0" y1="5.5" x2="11" y2="5.5" />
-      </svg>
-    </span>
-  );
-}
-
-const ABOUT_STATS = [
-  { k: "3.41", s: "/ 4.0", v: "Undergraduate CGPA" },
-  { k: "1", s: "thesis", v: "Laboratory research" },
-  { k: "4", s: "tools", v: "Engineering software" },
-  { k: "2021", s: "", v: "B.E. Completed" },
+const ABOUT_FACTS = [
+  { label: "Based in", value: "Pokhara, Nepal" },
+  { label: "Discipline", value: "Civil Engineering" },
+  { label: "Focus", value: "Water Resources" },
+  { label: "Languages", value: "English · Nepali" },
 ];
 
 function About() {
   return (
-    <section
-      id="about"
-      className="relative isolate scroll-mt-24 overflow-hidden py-24 md:py-36 lg:py-44"
-    >
-      {/* subtle blueprint layer */}
-      <motion.div
-        aria-hidden
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-15%" }}
-        transition={{ duration: 1.6, ease: "easeOut" }}
-        className="pointer-events-none absolute -right-24 top-16 -z-10 w-[820px] max-w-none text-ink opacity-[0.05] md:-right-32 md:top-24 lg:opacity-[0.06]"
-      >
-        <BlueprintSketch className="h-auto w-full" />
-      </motion.div>
-
-      <div className="relative mx-auto max-w-7xl px-6 md:px-10">
-        <Crosshair className="-left-1 -top-6 md:left-4" />
-        <Crosshair className="-right-1 -top-6 md:right-4" />
-
+    <section id="about" className="scroll-mt-24 py-24 md:py-36">
+      <div className="mx-auto max-w-5xl px-6 md:px-10">
         <Reveal>
           <SectionLabel index="01">About</SectionLabel>
         </Reveal>
 
-        <div className="mt-12 grid gap-x-16 gap-y-14 md:mt-16 md:grid-cols-12">
-          <Reveal className="md:col-span-7">
-            <h2 className="max-w-[36ch] font-serif text-[2.35rem] leading-[1.06] tracking-tight text-ink sm:text-5xl md:text-[4rem] md:leading-[1.03]">
-              A civil engineer turning ideas into{" "}
-              <em className="italic text-ink-soft">structures built to last.</em>
-            </h2>
-            <p className="mt-8 max-w-[46ch] text-[17px] leading-[1.75] text-ink-soft md:mt-10 md:text-[19px]">
-              From classroom hydraulics to real construction sites, I have spent four years
+        <Reveal delay={0.05}>
+          <h2 className="mt-10 max-w-[30ch] font-serif text-[2.25rem] leading-[1.1] tracking-tight text-ink sm:text-5xl md:mt-14 md:text-[3.5rem] md:leading-[1.06]">
+            A civil engineer turning ideas into{" "}
+            <em className="italic text-ink-soft">structures built to last.</em>
+          </h2>
+        </Reveal>
+
+        <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-2 md:gap-14">
+          <Reveal delay={0.1}>
+            <p className="text-[17px] leading-[1.8] text-ink-soft">
+              From classroom hydraulics to real construction sites, I spent four years
               learning how structures and water systems are designed, built, and kept
-              standing. I turn that learning into practical skill through projects, models,
-              and laboratory work — with the goal of taking it further through graduate
-              study.
+              standing. I studied Civil Engineering at Nepal Engineering College under
+              Pokhara University, and finished with a CGPA of 3.41.
             </p>
-
-            <div className="mt-10 flex items-center gap-4 md:mt-12">
-              <span className="h-px w-16 bg-hairline" />
-              <span className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
-                Nepal Engineering College · Pokhara University
-              </span>
-            </div>
           </Reveal>
-
-          <Reveal delay={0.1} className="md:col-span-5">
-            <div className="relative border-l border-hairline pl-6 md:pl-8">
-              <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-                My approach
-              </div>
-              <p className="mt-5 text-[16px] leading-[1.75] text-ink-soft md:text-[17px]">
-                I am interested in how engineering ideas move from drawings and calculations
-                into the real world. Every model, lab experiment, and site visit teaches me
-                something the textbook could not — and makes the next decision a little
-                better informed.
-              </p>
-              <p className="mt-5 text-[16px] leading-[1.75] text-ink-soft md:text-[17px]">
-                My final-year research on self-healing concrete showed me how patient real
-                engineering work is: cast the specimens, run the tests, let the data
-                disagree with you. I want to continue that habit through a Master's in Water
-                Resources Engineering in Germany, and eventually apply it to flood
-                management and sustainable infrastructure at home in Nepal.
-              </p>
-
-              <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6">
-                <Fact label="Based in" value="Pokhara, Nepal" />
-                <Fact label="Discipline" value="Civil Engineering" />
-                <Fact label="Focus" value="Water Resources · Hydraulics" />
-                <Fact label="Languages" value="English · Nepali" />
-              </div>
-            </div>
+          <Reveal delay={0.15}>
+            <p className="text-[17px] leading-[1.8] text-ink-soft">
+              My final-year research on self-healing concrete showed me how patient real
+              engineering work is — cast the specimens, run the tests, let the data
+              disagree with you. I want to carry that habit into a Master's in Water
+              Resources Engineering in Germany, and bring it back home to Nepal.
+            </p>
           </Reveal>
         </div>
 
-        {/* statistics strip */}
-        <Reveal delay={0.15}>
-          <div className="relative mt-20 border-t border-hairline pt-10 md:mt-28 md:pt-12">
-            <Crosshair className="-left-[5px] -top-[5px]" />
-            <Crosshair className="-right-[5px] -top-[5px]" />
-            <dl className="grid grid-cols-2 gap-y-10 md:grid-cols-4">
-              {ABOUT_STATS.map((s, i) => (
-                <div
-                  key={s.v}
-                  className={cn(
-                    "px-0 md:px-8",
-                    i > 0 && "md:border-l md:border-hairline",
-                    i % 2 === 1 && "border-l border-hairline pl-6 md:pl-8",
-                  )}
-                >
-                  <dd className="flex items-baseline gap-1.5 font-serif text-4xl text-ink md:text-5xl">
-                    {s.k}
-                    {s.s && (
-                      <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                        {s.s}
-                      </span>
-                    )}
-                  </dd>
-                  <dt className="mt-3 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                    {s.v}
-                  </dt>
-                </div>
-              ))}
-            </dl>
-          </div>
+        <Reveal delay={0.2}>
+          <dl className="mt-16 grid grid-cols-2 gap-x-10 gap-y-8 border-t border-hairline pt-8 md:mt-24 md:grid-cols-4">
+            {ABOUT_FACTS.map((f) => (
+              <div key={f.label}>
+                <dt className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                  {f.label}
+                </dt>
+                <dd className="mt-2 text-[15px] text-ink">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
       </div>
     </section>
   );
 }
 
-function Fact({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="border-t border-hairline pt-3">
-      <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-        {label}
-      </div>
-      <div className="mt-1.5 text-[14px] leading-snug text-ink">{value}</div>
-    </div>
-  );
-}
+
 
 
 /* -------------------- academic profile + timeline -------------------- */
