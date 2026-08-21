@@ -514,16 +514,6 @@ function About() {
 }
 
 
-function Fact({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="border-t border-hairline pt-3">
-      <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-        {label}
-      </div>
-      <div className="mt-1.5 text-[14px] leading-snug text-ink">{value}</div>
-    </div>
-  );
-}
 
 
 /* -------------------- academic profile + timeline -------------------- */
