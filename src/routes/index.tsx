@@ -471,27 +471,30 @@ function About() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="mt-10 max-w-[30ch] font-serif text-[2.25rem] leading-[1.1] tracking-tight text-ink sm:text-5xl md:mt-14 md:text-[3.5rem] md:leading-[1.06]">
-            A civil engineer turning ideas into{" "}
-            <em className="italic text-ink-soft">structures built to last.</em>
+          <h2 className="mt-10 max-w-[28ch] font-serif text-[2.25rem] leading-[1.08] tracking-tight text-ink sm:text-5xl md:mt-14 md:text-[3.5rem] md:leading-[1.05]">
+            I want to engineer how{" "}
+            <em className="italic text-ink-soft">Nepal lives with water.</em>
           </h2>
         </Reveal>
 
         <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-2 md:gap-14">
           <Reveal delay={0.1}>
             <p className="text-[17px] leading-[1.8] text-ink-soft">
-              From classroom hydraulics to real construction sites, I spent four years
-              learning how structures and water systems are designed, built, and kept
-              standing. I studied Civil Engineering at Nepal Engineering College under
-              Pokhara University, and finished with a CGPA of 3.41.
+              Four years at Nepal Engineering College gave me more than a degree — they
+              gave me a way of seeing the world. I learned to read forces, flows, and
+              failures before they happen. I completed my B.E. in Civil Engineering under
+              Pokhara University with a CGPA of 3.41, but the metric that matters most to
+              me is how many lives a well-designed water system can protect.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="text-[17px] leading-[1.8] text-ink-soft">
-              My final-year research on self-healing concrete showed me how patient real
-              engineering work is — cast the specimens, run the tests, let the data
-              disagree with you. I want to carry that habit into a Master's in Water
-              Resources Engineering in Germany, and bring it back home to Nepal.
+              My final-year research on self-healing concrete taught me that real
+              engineering is patient, stubborn, and deeply satisfying. Now I am preparing
+              for a Master's in Water Resources Engineering in Germany — not just to earn
+              a title, but to bring home the tools, methods, and mindset that make our
+              rivers safer, our irrigation smarter, and our infrastructure more resilient to
+              a changing climate.
             </p>
           </Reveal>
         </div>
