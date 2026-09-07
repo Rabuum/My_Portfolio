@@ -72,7 +72,7 @@ export const PORTFOLIO_DATA = {
     email: "nirallunima@gmail.com",
     phone: "+977 · On Request",
     linkedin: "https://www.linkedin.com/in/rabin-giri-076240363/",
-    github: "https://github.com/Smritibasnet09",
+    github: "https://github.com/Rabuum",
     resumePdf: "/Rabin_Giri_Resume.pdf",
     image: "/rabin-giri.png",
     bioShort:
