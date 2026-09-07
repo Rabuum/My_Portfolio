@@ -5,8 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Inter", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-signature: "Caveat", "Alex Brush", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -28,46 +29,46 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: var(--paper);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-hairline: var(--hairline);
+  --color-navy: #0F2D5C;
+  --color-soft-blue: #2E5BFF;
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-paper: var(--paper);
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 
-  --paper: oklch(0.995 0 0);
-  --background: oklch(0.995 0 0);
-  --foreground: oklch(0.16 0 0);
-  --ink: oklch(0.14 0 0);
-  --ink-soft: oklch(0.38 0 0);
+  --paper: #ffffff;
+  --background: #F5F7FA;
+  --foreground: #333333;
+  --ink: #0F2D5C;
+  --ink-soft: #4B5563;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0 0);
+  --card: #ffffff;
+  --card-foreground: #333333;
+  --popover: #ffffff;
+  --popover-foreground: #333333;
 
-  --primary: oklch(0.14 0 0);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.16 0 0);
-  --muted: oklch(0.965 0 0);
-  --muted-foreground: oklch(0.48 0 0);
-  --accent: oklch(0.955 0 0);
-  --accent-foreground: oklch(0.16 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0 0);
+  --primary: #0F2D5C;
+  --primary-foreground: #ffffff;
+  --secondary: #F5F7FA;
+  --secondary-foreground: #0F2D5C;
+  --muted: #E5E7EB;
+  --muted-foreground: #6B7280;
+  --accent: #2E5BFF;
+  --accent-foreground: #ffffff;
 
-  --border: oklch(0.92 0 0);
-  --hairline: oklch(0.9 0 0);
-  --input: oklch(0.92 0 0);
-  --ring: oklch(0.5 0 0);
+  --border: #E5E7EB;
+  --hairline: #E5E7EB;
+  --input: #D1D5DB;
+  --ring: #0F2D5C;
 }
 
 @layer base {
@@ -87,13 +88,13 @@
     font-feature-settings: "ss01", "cv11";
   }
   ::selection {
-    background: var(--color-ink);
+    background: var(--color-primary);
     color: var(--color-paper);
   }
-  h1, h2, h3 {
-    font-family: var(--font-serif);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
     letter-spacing: -0.02em;
-    font-weight: 400;
+    font-weight: 700;
   }
 }
 
@@ -105,6 +106,10 @@
   text-wrap: balance;
 }
 
-@utility marquee-fade {
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+.bg-grid-paper {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 45, 92, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 45, 92, 0.04) 1px, transparent 1px);
 }
+

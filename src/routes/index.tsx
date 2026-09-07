@@ -1,895 +1,429 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { motion, useScroll, useSpring, type Variants } from "framer-motion";
-import { useEffect, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import {
-  ArrowUpRight,
-  Mail,
-  MapPin,
-  Phone,
-  Download,
+  User,
+  Briefcase,
   GraduationCap,
-  Beaker,
-  Waves,
+  MapPin,
+  Folder,
+  Award,
+  Wrench,
+  Droplets,
+  Target,
+  ArrowRight,
+  CheckCircle2,
   Compass,
+  Building2,
+  Layers,
   FileText,
-  Globe,
-  ExternalLink,
-  Sparkles,
-  ChevronRight,
+  Mail,
 } from "lucide-react";
+import { Navbar } from "../components/layout/Navbar";
+import { Footer } from "../components/layout/Footer";
+import { ProjectCard } from "../components/common/ProjectCard";
+import { HeroBridgeSketch } from "../components/sections/HeroBridgeSketch";
+import { PORTFOLIO_DATA } from "../data/portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Rabin Giri — Civil Engineer · Water Resources Researcher" },
+      { title: "Rabin Giri — Civil Engineer & Water Resources Researcher" },
       {
         name: "description",
         content:
-          "Academic portfolio of Rabin Giri, a Civil Engineer from Nepal preparing for a Master's in Water Resources Engineering in Germany. Research, technical expertise, and career vision.",
+          "Academic and engineering portfolio of Rabin Giri, Civil Engineering graduate from Nepal specializing in Water Resources, Hydrology, Structural ETABS, and GIS Watershed Modeling.",
       },
     ],
   }),
-  component: Portfolio,
+  component: LandingPage,
 });
 
-/* ------------------------------- data ------------------------------- */
-
-const NAV = [
-  { id: "about", label: "About" },
-  { id: "academic", label: "Academic" },
-  { id: "research", label: "Research" },
-  { id: "skills", label: "Skills" },
-  { id: "vision", label: "Vision" },
-  { id: "contact", label: "Contact" },
-];
-
-const FOCUS = [
-  "Hydrology",
-  "Hydraulic Engineering",
-  "Watershed Management",
-  "Flood Mitigation",
-  "Irrigation Systems",
-  "Climate Resilience",
-  "River Engineering",
-  "Sustainable Infrastructure",
-];
-
-const COURSEWORK = [
-  "Hydrology",
-  "Hydraulic Engineering",
-  "Fluid Mechanics",
-  "Irrigation Engineering",
-  "Water Supply Engineering",
-  "Environmental Engineering",
-  "Structural Analysis",
-  "Engineering Geology",
-];
-
-const SOFTWARE = [
-  { name: "AutoCAD", note: "2D / 3D drafting, technical drawings, site planning" },
-  { name: "ArcGIS", note: "Spatial analysis, watershed & environmental mapping" },
-  { name: "ETABS", note: "Structural modelling and analysis" },
-  { name: "MS Office", note: "Documentation, data analysis, reporting" },
-];
-
-const SKILLS = [
-  "Research Methodology",
-  "Technical Documentation",
-  "Analytical Thinking",
-  "Problem Solving",
-  "Laboratory Testing",
-  "Data Analysis",
-  "Communication",
-  "Teamwork & Leadership",
-];
-
-const TIMELINE = [
-  {
-    year: "2019 — 2024",
-    title: "Bachelor of Civil Engineering",
-    org: "Nepal Engineering College · Pokhara University",
-    detail:
-      "CGPA 3.41 / 4.00. Concentrated coursework in hydrology, hydraulics, irrigation, and environmental engineering, complemented by a research-driven final year.",
-  },
-  {
-    year: "2023 — 2024",
-    title: "Undergraduate Research",
-    org: "Self-Healing Concrete Using Different Healing Agents",
-    detail:
-      "Designed and conducted laboratory experiments to evaluate crack-healing performance and compressive strength recovery across multiple healing agents.",
-  },
-  {
-    year: "2025 →",
-    title: "Master's in Water Resources Engineering",
-    org: "Target: Germany · DAAD Scholarship Track",
-    detail:
-      "Preparing applications to leading German technical universities with a research focus on sustainable water management and climate-resilient infrastructure.",
-  },
-];
-
-/* ---------------------------- animation --------------------------- */
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-};
-
-/* ------------------------------- ui ------------------------------- */
-
-function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-      <span className="font-mono text-[11px]">{index}</span>
-      <span className="h-px w-8 bg-hairline" />
-      <span>{children}</span>
-    </div>
-  );
-}
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-/* ------------------------------ nav ------------------------------ */
-
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+function LandingPage() {
+  const { profile, projects } = PORTFOLIO_DATA;
+  const featuredProjects = projects.slice(0, 3);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "border-b border-hairline bg-background/80 backdrop-blur-xl"
-          : "border-b border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        <a href="#top" className="group flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-ink text-[13px] font-medium text-paper">
-            RG
-          </span>
-          <span className="hidden text-sm font-medium tracking-tight sm:block">
-            Rabin Giri
-          </span>
-        </a>
+    <div className="min-h-screen bg-[#F5F7FA] text-[#333333] flex flex-col font-sans selection:bg-[#0F2D5C] selection:text-white">
+      <Navbar />
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {NAV.map((n) => (
-            <a
-              key={n.id}
-              href={`#${n.id}`}
-              className="text-[13px] text-ink-soft transition-colors hover:text-ink"
-            >
-              {n.label}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          href="#contact"
-          className="hidden items-center gap-2 rounded-full bg-ink px-4 py-2 text-[13px] font-medium text-paper transition-transform hover:-translate-y-0.5 md:inline-flex"
+      <main className="flex-1">
+        {/* ================= 1. HERO SECTION ================= */}
+        <section
+          id="home"
+          className="relative pt-28 pb-16 md:pt-36 md:pb-24 border-b border-[#E5E7EB] bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden"
         >
-          Get in touch
-          <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
+          {/* Artistic Bridge Sketch Watermark Accent */}
+          <HeroBridgeSketch />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              {/* Left Column: Headline, Title & CTAs */}
+              <div className="lg:col-span-7">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="inline-flex items-center gap-2 rounded-full bg-[#0F2D5C]/10 border border-[#0F2D5C]/20 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#0F2D5C] mb-4">
+                    <Building2 className="h-3.5 w-3.5" />
+                    <span>Civil Engineering · Water Resources & Infrastructure</span>
+                  </div>
 
-        <button
-          aria-label="Menu"
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-9 w-9 place-items-center rounded-full border border-hairline md:hidden"
-        >
-          <div className="space-y-1.5">
-            <span className="block h-px w-4 bg-ink" />
-            <span className="block h-px w-4 bg-ink" />
-          </div>
-        </button>
-      </div>
+                  <span className="text-xl sm:text-2xl font-bold text-[#4B5563] tracking-tight block">
+                    Hello, I'm
+                  </span>
+                  <h1 className="mt-1 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#0F2D5C] uppercase leading-none font-heading">
+                    {profile.name}
+                  </h1>
+                  <h2 className="mt-4 text-xl sm:text-2xl font-bold text-[#333333] tracking-tight">
+                    {profile.title}
+                  </h2>
+                  <p className="mt-1.5 text-base sm:text-lg font-medium text-[#4B5563]">
+                    {profile.subtitle}
+                  </p>
 
-      {open && (
-        <div className="border-t border-hairline bg-background md:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            {NAV.map((n) => (
-              <a
-                key={n.id}
-                href={`#${n.id}`}
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-between rounded-md px-2 py-3 text-sm text-ink-soft hover:bg-muted hover:text-ink"
-              >
-                {n.label}
-                <ChevronRight className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
+                  <div className="mt-4 flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#4B5563]">
+                    <MapPin className="h-4 w-4 text-[#0F2D5C]" />
+                    <span>{profile.location}</span>
+                  </div>
 
-/* ----------------------------- hero ----------------------------- */
+                  {/* Primary CTA Buttons */}
+                  <div className="mt-8 flex flex-wrap items-center gap-3.5">
+                    <Link
+                      to="/about"
+                      className="inline-flex items-center gap-2 rounded-xl bg-[#0F2D5C] px-6 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-md transition-all hover:bg-[#1A3D74] hover:-translate-y-0.5"
+                    >
+                      <User className="h-4 w-4" />
+                      <span>About Me</span>
+                    </Link>
 
-function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-40" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-ink" />
-          </span>
-          Preparing for Master's admissions · Intake 2025 / 26
-        </motion.div>
+                    <Link
+                      to="/projects"
+                      className="inline-flex items-center gap-2 rounded-xl border-2 border-[#0F2D5C] bg-white px-6 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#0F2D5C] transition-all hover:bg-[#F5F7FA] hover:-translate-y-0.5 shadow-2xs"
+                    >
+                      <Briefcase className="h-4 w-4" />
+                      <span>View Projects</span>
+                    </Link>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl font-serif text-[13vw] leading-[0.95] tracking-[-0.03em] text-ink text-balance sm:text-[10vw] md:text-[8.4vw] lg:text-[7.6rem]"
-        >
-          Civil engineer <br />
-          shaping <em className="italic text-ink-soft">resilient water</em>{" "}
-          <span className="whitespace-nowrap">futures.</span>
-        </motion.h1>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 rounded-xl border border-[#E5E7EB] bg-white px-5 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#4B5563] transition-all hover:text-[#0F2D5C] hover:bg-[#F5F7FA]"
+                    >
+                      <Mail className="h-4 w-4" />
+                      <span>Contact Me</span>
+                    </Link>
+                  </div>
+                </motion.div>
+              </div>
 
-        <div className="mt-14 grid gap-10 border-t border-hairline pt-10 md:grid-cols-[1fr_auto] md:items-end">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="max-w-xl text-base leading-relaxed text-ink-soft md:text-lg"
-          >
-            I'm <span className="text-ink">Rabin Giri</span> — a Civil Engineer from Nepal focused on
-            hydrology, hydraulic engineering and sustainable water resource management. I'm
-            preparing for a Master's degree in Germany to advance research on climate-resilient
-            infrastructure and river systems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.7 }}
-            className="flex flex-wrap items-center gap-3"
-          >
-            <a
-              href="#research"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
-            >
-              View research
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href="/Rabin_Giri_Resume.pdf"
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
-            >
-              <Download className="h-4 w-4" />
-              Resume
-            </a>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-20 grid gap-6 border-t border-hairline pt-10 sm:grid-cols-2 md:grid-cols-4"
-        >
-          {[
-            { k: "3.41 / 4.0", v: "Undergraduate CGPA" },
-            { k: "4 yrs", v: "B.E. Civil Engineering" },
-            { k: "1", v: "Research thesis published" },
-            { k: "Germany", v: "Target for Master's" },
-          ].map((s) => (
-            <div key={s.v}>
-              <div className="font-serif text-3xl text-ink md:text-4xl">{s.k}</div>
-              <div className="mt-1 text-[13px] uppercase tracking-wider text-muted-foreground">
-                {s.v}
+              {/* Right Column: Professional Profile Image Container */}
+              <div className="lg:col-span-5">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  className="relative"
+                >
+                  <div className="relative rounded-3xl border border-[#E5E7EB] bg-white p-3 sm:p-3.5 shadow-xl overflow-hidden group">
+                    <div className="relative w-full aspect-[4/4.5] rounded-2xl bg-[#F5F7FA] overflow-hidden flex items-end justify-center">
+                      <img
+                        src="/rabin-giri-bridge.png"
+                        alt={profile.name}
+                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+          </div>
+        </section>
 
-/* --------------------------- marquee --------------------------- */
-
-function FocusMarquee() {
-  const row = [...FOCUS, ...FOCUS];
-  return (
-    <section aria-hidden className="border-y border-hairline bg-background py-6">
-      <div className="marquee-fade overflow-hidden">
-        <motion.div
-          className="flex gap-12 whitespace-nowrap"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 40, ease: "linear", repeat: Infinity }}
-        >
-          {row.map((f, i) => (
-            <div
-              key={`${f}-${i}`}
-              className="flex items-center gap-12 font-serif text-2xl italic text-ink-soft md:text-3xl"
-            >
-              {f}
-              <span className="text-ink">✦</span>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------------------- about ---------------------------- */
-
-function About() {
-  return (
-    <section id="about" className="scroll-mt-24 py-28 md:py-40">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <Reveal>
-          <SectionLabel index="01">About</SectionLabel>
-        </Reveal>
-
-        <div className="mt-10 grid gap-12 md:grid-cols-12">
-          <Reveal className="md:col-span-7">
-            <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-              A research-minded engineer with a
-              <em className="italic text-ink-soft"> long-horizon</em> vision for
-              sustainable water systems.
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1} className="space-y-6 md:col-span-5">
-            <p className="text-base leading-relaxed text-ink-soft md:text-[17px]">
-              My academic journey has been guided by a single question: how can engineering
-              respond meaningfully to the water challenges facing communities like mine in
-              Nepal? Every course, project, and lab has strengthened my conviction that
-              rigorous research must sit at the heart of that answer.
-            </p>
-            <p className="text-base leading-relaxed text-ink-soft md:text-[17px]">
-              I am now preparing to pursue a Master's in Water Resources Engineering in
-              Germany — a country whose research culture, technical rigour, and commitment
-              to sustainability align closely with my long-term goals in hydrology, flood
-              management, and climate-resilient infrastructure.
-            </p>
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <Fact label="Based in" value="Pokhara, Nepal" />
-              <Fact label="Discipline" value="Civil Engineering" />
-              <Fact label="Focus" value="Water Resources" />
-              <Fact label="Languages" value="English · Nepali" />
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Fact({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="border-t border-hairline pt-3">
-      <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-        {label}
-      </div>
-      <div className="mt-1 text-sm text-ink">{value}</div>
-    </div>
-  );
-}
-
-/* -------------------- academic profile + timeline -------------------- */
-
-function Academic() {
-  return (
-    <section id="academic" className="scroll-mt-24 border-t border-hairline bg-secondary/40 py-28 md:py-40">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <Reveal>
-          <SectionLabel index="02">Academic Profile</SectionLabel>
-        </Reveal>
-
-        <div className="mt-10 grid gap-16 md:grid-cols-12">
-          <Reveal className="md:col-span-5">
-            <h2 className="font-serif text-4xl leading-[1.05] text-ink md:text-5xl">
-              Foundations built for graduate research.
-            </h2>
-            <p className="mt-6 max-w-md text-ink-soft">
-              My undergraduate curriculum combined a rigorous civil engineering core with
-              specialised study in water and environmental systems — the technical basis for
-              advanced research in hydrology and hydraulics.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1} className="md:col-span-7">
-            <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-              Core coursework
-            </div>
-            <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-2">
-              {COURSEWORK.map((c) => (
-                <div
-                  key={c}
-                  className="flex items-center gap-3 border-b border-hairline py-3 text-[15px] text-ink"
-                >
-                  <span className="h-1 w-1 rounded-full bg-ink" />
-                  {c}
+        {/* ================= 2. SHORT ABOUT ME SUMMARY ================= */}
+        <section id="about-summary" className="py-16 md:py-20 border-b border-[#E5E7EB] bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              {/* Bio Summary */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="lg:col-span-6"
+              >
+                <div className="inline-block border-b-2 border-[#0F2D5C] pb-1">
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-[#0F2D5C]">
+                    CIVIL ENGINEERING OVERVIEW
+                  </span>
                 </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
 
-        {/* Timeline */}
-        <div className="mt-24">
-          <Reveal>
-            <SectionLabel index="03">Education & Trajectory</SectionLabel>
-          </Reveal>
-
-          <div className="mt-12 space-y-0">
-            {TIMELINE.map((t, i) => (
-              <Reveal key={t.title} delay={i * 0.05}>
-                <div className="group grid grid-cols-1 gap-6 border-t border-hairline py-8 md:grid-cols-[180px_1fr_auto] md:gap-10 md:py-10">
-                  <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    {t.year}
+                <div className="mt-6 flex items-start gap-5">
+                  <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-[#E5E7EB] bg-[#F5F7FA] text-[#0F2D5C]">
+                    <User className="h-7 w-7" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl leading-tight text-ink md:text-3xl">
-                      {t.title}
-                    </h3>
-                    <div className="mt-1 text-sm text-ink-soft">{t.org}</div>
-                    <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
-                      {t.detail}
+                    <p className="text-sm sm:text-base leading-relaxed font-medium text-[#4B5563]">
+                      {profile.bioShort}
                     </p>
-                  </div>
-                  <div className="hidden md:block">
-                    <ArrowUpRight className="h-5 w-5 text-ink-soft transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
+                    <div className="mt-4 font-signature text-3xl font-bold text-[#0F2D5C]">
+                      Rabin Giri
+                    </div>
                   </div>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-/* --------------------------- research --------------------------- */
+                <div className="mt-6">
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0F2D5C] hover:text-[#2E5BFF] hover:underline"
+                  >
+                    <span>Read Full About Profile</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </motion.div>
 
-function Research() {
-  return (
-    <section id="research" className="scroll-mt-24 py-28 md:py-40">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <Reveal>
-          <SectionLabel index="04">Research & Engineering Projects</SectionLabel>
-        </Reveal>
+              {/* 4 Feature Badges */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4"
+              >
+                <div className="rounded-2xl border border-[#E5E7EB] bg-[#F5F7FA]/70 p-4 transition-all hover:border-[#0F2D5C]/40 hover:bg-white hover:shadow-md">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#0F2D5C] border border-[#E5E7EB]">
+                      <GraduationCap className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#0F2D5C]">B.E. Civil Graduate</h4>
+                      <p className="text-[11px] text-[#6B7280]">Pokhara Univ (CGPA 3.41)</p>
+                    </div>
+                  </div>
+                </div>
 
-        <Reveal>
-          <h2 className="mt-8 max-w-3xl font-serif text-4xl leading-[1.05] text-ink md:text-6xl">
-            Where laboratory work meets
-            <em className="italic text-ink-soft"> real-world</em> engineering.
-          </h2>
-        </Reveal>
+                <div className="rounded-2xl border border-[#E5E7EB] bg-[#F5F7FA]/70 p-4 transition-all hover:border-[#0F2D5C]/40 hover:bg-white hover:shadow-md">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#0F2D5C] border border-[#E5E7EB]">
+                      <Briefcase className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#0F2D5C]">Site & Lab Experience</h4>
+                      <p className="text-[11px] text-[#6B7280]">Quality Control & Concrete Thesis</p>
+                    </div>
+                  </div>
+                </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-12">
-          {/* Featured research */}
-          <motion.article
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="group relative overflow-hidden rounded-2xl border border-hairline bg-card p-8 md:col-span-8 md:p-14"
-          >
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-              <Beaker className="h-4 w-4" />
-              Undergraduate thesis · Featured
+                <div className="rounded-2xl border border-[#E5E7EB] bg-[#F5F7FA]/70 p-4 transition-all hover:border-[#0F2D5C]/40 hover:bg-white hover:shadow-md">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#0F2D5C] border border-[#E5E7EB]">
+                      <Droplets className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#0F2D5C]">Water Resources</h4>
+                      <p className="text-[11px] text-[#6B7280]">Hydrology & HEC-RAS 2D</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-[#E5E7EB] bg-[#F5F7FA]/70 p-4 transition-all hover:border-[#0F2D5C]/40 hover:bg-white hover:shadow-md">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#0F2D5C] border border-[#E5E7EB]">
+                      <Target className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#0F2D5C]">Target Trajectory</h4>
+                      <p className="text-[11px] text-[#6B7280]">M.Sc. Germany (DAAD Track)</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-            <h3 className="mt-6 font-serif text-3xl leading-tight text-ink md:text-5xl">
-              Self-Healing Concrete Using Different Healing Agents
-            </h3>
-            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-soft md:text-base">
-              A laboratory investigation comparing multiple healing agents for their ability
-              to autonomously repair micro-cracks in concrete. The study evaluated
-              compressive strength recovery, crack-healing efficiency, and long-term
-              durability implications — combining experimental design, quantitative
-              analysis, and formal technical reporting.
-            </p>
+          </div>
+        </section>
 
-            <div className="mt-10 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-2">
-              {[
-                { k: "Method", v: "Comparative experimental study" },
-                { k: "Testing", v: "Compressive strength & crack analysis" },
-                { k: "Outputs", v: "Thesis, technical report, presentation" },
-                { k: "Skills", v: "Lab work · data analysis · scientific writing" },
-              ].map((r) => (
-                <div key={r.k}>
-                  <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                    {r.k}
-                  </div>
-                  <div className="mt-1 text-[15px] text-ink">{r.v}</div>
+        {/* ================= 3. KEY HIGHLIGHTS ================= */}
+        <section id="key-highlights" className="py-16 md:py-20 border-b border-[#E5E7EB] bg-[#F5F7FA]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#0F2D5C]">
+                CORE DISCIPLINE HIGHLIGHTS
+              </span>
+              <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0F2D5C] font-heading">
+                Civil Engineering Specializations
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-[#4B5563]">
+                Combining structural design software, water resources modeling, and material science experimentation.
+              </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#0F2D5C] text-white">
+                  <Droplets className="h-5 w-5" />
                 </div>
+                <h3 className="mt-4 text-base font-bold text-[#0F2D5C]">Water Resources</h3>
+                <p className="mt-2 text-xs text-[#4B5563] leading-relaxed">
+                  Hydrology, HEC-RAS river modeling, ogee spillway design, and flood inundation mapping.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#0F2D5C] text-white">
+                  <Building2 className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-bold text-[#0F2D5C]">Structural Engineering</h3>
+                <p className="mt-2 text-xs text-[#4B5563] leading-relaxed">
+                  3D ETABS modeling, STAAD Pro frame analysis, seismic lateral load calculations, and NBC code compliance.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#0F2D5C] text-white">
+                  <Compass className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-bold text-[#0F2D5C]">GIS Watershed Mapping</h3>
+                <p className="mt-2 text-xs text-[#4B5563] leading-relaxed">
+                  ArcGIS spatial analysis, DEM processing, stream network delineation, and catchment slope mapping.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm hover:shadow-md transition-all">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#0F2D5C] text-white">
+                  <Wrench className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-bold text-[#0F2D5C]">Construction Management</h3>
+                <p className="mt-2 text-xs text-[#4B5563] leading-relaxed">
+                  Quantity estimation (BOQ), site quality assurance, concrete slump testing, and AutoCAD drafting.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= 4. ACHIEVEMENT STATISTICS BAR ================= */}
+        <section id="stats" className="bg-[#0F2D5C] py-10 text-white shadow-xl">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 divide-y md:divide-y-0 md:divide-x divide-white/15 items-center">
+              <div className="flex items-center gap-3 pt-4 md:pt-0 md:pl-4 first:pl-0">
+                <GraduationCap className="h-8 w-8 text-white/80 shrink-0" />
+                <div>
+                  <div className="text-sm font-bold text-white">B.E. Civil</div>
+                  <div className="text-xs text-white/70">Pokhara Univ</div>
+                  <div className="text-[10px] text-white/50">CGPA 3.41</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 pt-4 md:pt-0 md:pl-4">
+                <Folder className="h-8 w-8 text-white/80 shrink-0" />
+                <div>
+                  <div className="text-2xl font-extrabold text-white">6+</div>
+                  <div className="text-xs text-white/70">Major Projects</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 pt-4 md:pt-0 md:pl-4">
+                <Briefcase className="h-8 w-8 text-white/80 shrink-0" />
+                <div>
+                  <div className="text-2xl font-extrabold text-white">1+</div>
+                  <div className="text-xs text-white/70">Years Experience</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 pt-4 md:pt-0 md:pl-4">
+                <Award className="h-8 w-8 text-white/80 shrink-0" />
+                <div>
+                  <div className="text-2xl font-extrabold text-white">5+</div>
+                  <div className="text-xs text-white/70">Certifications</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 pt-4 md:pt-0 md:pl-4">
+                <Wrench className="h-8 w-8 text-white/80 shrink-0" />
+                <div>
+                  <div className="text-2xl font-extrabold text-white">15+</div>
+                  <div className="text-xs text-white/70">Civil Software Tools</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= 5. FEATURED PROJECTS PREVIEW ================= */}
+        <section id="featured-projects" className="py-16 md:py-24 border-b border-[#E5E7EB] bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-[#E5E7EB] pb-4">
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-widest text-[#0F2D5C]">
+                  FEATURED WORK
+                </span>
+                <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#0F2D5C] font-heading">
+                  Major Engineering & Research Projects
+                </h2>
+              </div>
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0F2D5C] hover:text-[#2E5BFF]"
+              >
+                <span>View All Projects</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
 
-            <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border border-hairline" />
-            <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full border border-hairline" />
-          </motion.article>
-
-          {/* Interests / applied areas */}
-          <div className="grid gap-6 md:col-span-4">
-            {[
-              {
-                icon: Waves,
-                title: "Water Resources",
-                text: "Applied research in hydrology, hydraulic modelling and sustainable water management.",
-              },
-              {
-                icon: Compass,
-                title: "GIS & Analysis",
-                text: "Spatial analysis for watersheds, land use and environmental planning using ArcGIS.",
-              },
-              {
-                icon: Sparkles,
-                title: "Sustainable Systems",
-                text: "Climate-resilient infrastructure, flood mitigation and low-impact engineering.",
-              },
-            ].map((c, i) => (
-              <Reveal key={c.title} delay={i * 0.08}>
-                <div className="group h-full rounded-2xl border border-hairline p-6 transition-colors hover:bg-secondary/60">
-                  <c.icon className="h-5 w-5 text-ink" />
-                  <h4 className="mt-6 font-serif text-2xl text-ink">{c.title}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{c.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------------------- skills ---------------------------- */
-
-function Skills() {
-  return (
-    <section id="skills" className="scroll-mt-24 border-t border-hairline bg-secondary/40 py-28 md:py-40">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <Reveal>
-          <SectionLabel index="05">Technical Skills & Software</SectionLabel>
-        </Reveal>
-
-        <div className="mt-10 grid gap-16 md:grid-cols-12">
-          <Reveal className="md:col-span-5">
-            <h2 className="font-serif text-4xl leading-[1.05] text-ink md:text-5xl">
-              Engineering tools, applied with intent.
-            </h2>
-            <p className="mt-6 max-w-md text-ink-soft">
-              Each tool in my workflow is aligned with a purpose — from spatial analysis of
-              watersheds in ArcGIS to structural modelling in ETABS. Together they support
-              a research-driven approach to water resources engineering.
-            </p>
-          </Reveal>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-4 md:col-span-7 sm:grid-cols-2"
-          >
-            {SOFTWARE.map((s) => (
-              <motion.div
-                key={s.name}
-                variants={fadeUp}
-                className="group rounded-xl border border-hairline bg-card p-6 transition-colors hover:border-ink"
+            <div className="mt-10 text-center">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#0F2D5C] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-[#1A3D74] transition-all"
               >
-                <div className="flex items-center justify-between">
-                  <div className="font-serif text-2xl text-ink">{s.name}</div>
-                  <ArrowUpRight className="h-4 w-4 text-ink-soft transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{s.note}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        <div className="mt-20">
-          <Reveal>
-            <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-              Professional competencies
+                <span>Explore Complete Engineering Dossier</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-          </Reveal>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="mt-6 flex flex-wrap gap-3"
-          >
-            {SKILLS.map((s) => (
-              <motion.span
-                key={s}
-                variants={fadeUp}
-                className="rounded-full border border-hairline bg-background px-4 py-2 text-sm text-ink"
-              >
-                {s}
-              </motion.span>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
+          </div>
+        </section>
 
-/* ---------------------------- vision ---------------------------- */
-
-function Vision() {
-  return (
-    <section id="vision" className="scroll-mt-24 py-28 md:py-40">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <Reveal>
-          <SectionLabel index="06">Career Vision</SectionLabel>
-        </Reveal>
-
-        <div className="mt-12 grid gap-16 md:grid-cols-12">
-          <Reveal className="md:col-span-7">
-            <h2 className="font-serif text-4xl leading-[1.05] text-ink md:text-6xl">
-              A Master's in Germany. A commitment to
-              <em className="italic text-ink-soft"> Nepal's water future.</em>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1} className="space-y-6 md:col-span-5">
-            <p className="text-[17px] leading-relaxed text-ink-soft">
-              My immediate goal is to pursue a Master's degree in Water Resources
-              Engineering in Germany, engaging with world-class research on hydrology,
-              hydraulics and climate-adaptive design.
-            </p>
-            <p className="text-[17px] leading-relaxed text-ink-soft">
-              My long-term commitment is to bring that expertise home — advancing flood
-              management, river engineering, irrigation and resilient infrastructure that
-              serve Nepal's communities and its fragile Himalayan ecosystems.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mt-20 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              t: "Advanced Study",
-              d: "Master's coursework in hydrology, hydraulics, and sustainable water systems within Germany's technical university ecosystem.",
-              i: GraduationCap,
-            },
-            {
-              t: "Applied Research",
-              d: "Contribute to research on climate-resilient infrastructure, flood forecasting, and watershed modelling.",
-              i: Beaker,
-            },
-            {
-              t: "Impact at Home",
-              d: "Return with expertise to strengthen Nepal's water infrastructure, irrigation systems, and river management practices.",
-              i: Waves,
-            },
-          ].map((c, i) => (
-            <Reveal key={c.t} delay={i * 0.08}>
-              <div className="h-full rounded-2xl border border-hairline p-8">
-                <c.i className="h-5 w-5 text-ink" />
-                <h3 className="mt-6 font-serif text-2xl text-ink">{c.t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{c.d}</p>
+        {/* ================= 6. CALL-TO-ACTION SECTION ================= */}
+        <section id="cta" className="py-16 md:py-24 bg-[#F5F7FA]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-[#E5E7EB] bg-[#0F2D5C] p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2E5BFF] bg-white/10 px-3 py-1 rounded-full">
+                  Academic & Professional Opportunities
+                </span>
+                <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold font-heading">
+                  Let's Discuss Civil Engineering Research
+                </h2>
+                <p className="mt-2 text-sm text-white/80 max-w-xl leading-relaxed">
+                  Open for conversations regarding M.Sc. Water Resources admissions in Germany, research collaborations, or technical engineering roles.
+                </p>
               </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
-/* ---------------------------- contact ---------------------------- */
+              <div className="flex flex-wrap gap-3.5 shrink-0">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#0F2D5C] shadow-md hover:bg-[#F5F7FA] transition-all"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span>Contact Rabin</span>
+                </Link>
 
-function Contact() {
-  const [emailCopied, setEmailCopied] = useState(false);
-
-  const handleEmailClick = async () => {
-    try {
-      await navigator.clipboard.writeText("rabingiri456@gmail.com");
-      setEmailCopied(true);
-      setTimeout(() => setEmailCopied(false), 2000);
-    } catch {
-      // Clipboard API unavailable; mailto href still opens the default client.
-    }
-  };
-
-  return (
-    <section id="contact" className="scroll-mt-24 border-t border-hairline py-28 md:py-40">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <Reveal>
-          <SectionLabel index="07">Contact & Resume</SectionLabel>
-        </Reveal>
-
-        <Reveal>
-          <h2 className="mt-8 max-w-4xl font-serif text-5xl leading-[0.98] tracking-tight text-ink md:text-8xl">
-            Let's build the next
-            <br />
-            <em className="italic text-ink-soft">chapter.</em>
-          </h2>
-        </Reveal>
-
-        <div className="mt-16 grid gap-10 border-t border-hairline pt-10 md:grid-cols-12">
-          <Reveal className="md:col-span-6">
-            <p className="max-w-lg text-[17px] leading-relaxed text-ink-soft">
-              I welcome conversations with professors, admissions committees, scholarship
-              programmes and engineering teams. Reach out for collaboration, research
-              opportunities, or a full copy of my academic dossier.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="mailto:rabingiri456@gmail.com"
-                onClick={handleEmailClick}
-                className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
-              >
-                <Mail className="h-4 w-4" />
-                {emailCopied ? "Copied email" : "Email Rabin"}
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-              <a
-                href="/Rabin_Giri_Resume.pdf"
-                download
-                className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-muted"
-              >
-                <Download className="h-4 w-4" />
-                Download Resume (PDF)
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1} className="md:col-span-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <ContactCard icon={Mail} label="Email" value="rabingiri456@gmail.com" />
-              <ContactCard icon={Phone} label="Phone" value="+977 · on request" />
-              <ContactCard icon={MapPin} label="Location" value="Pokhara, Nepal" />
-              <ContactCard icon={FileText} label="Dossier" value="Available on request" />
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ContactCard({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: typeof Mail;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="rounded-xl border border-hairline p-5">
-      <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-        <Icon className="h-3.5 w-3.5" />
-        {label}
-      </div>
-      <div className="mt-2 text-[15px] text-ink">{value}</div>
-    </div>
-  );
-}
-
-/* ---------------------------- footer ---------------------------- */
-
-function Footer() {
-  return (
-    <footer className="border-t border-hairline bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
-        <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
-          <div>
-            <div className="font-serif text-4xl text-ink md:text-6xl">Rabin Giri</div>
-            <div className="mt-2 text-sm text-ink-soft">
-              Civil Engineer · Water Resources Researcher · Nepal
+                <a
+                  href={profile.resumePdf}
+                  download
+                  className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-white/20 transition-all"
+                >
+                  <FileText className="h-4 w-4" />
+                  <span>Download CV (PDF)</span>
+                </a>
+              </div>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="mailto:rabingiri456@gmail.com"
-              className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
-              aria-label="Email"
-            >
-              <Mail className="h-4 w-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/rabin-giri-076240363/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
-              aria-label="LinkedIn"
-            >
-              <Globe className="h-4 w-4" />
-            </a>
-            <a
-              href="#"
-              className="grid h-10 w-10 place-items-center rounded-full border border-hairline transition-colors hover:bg-muted"
-              aria-label="ResearchGate"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-hairline pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} Rabin Giri. All rights reserved.</div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-/* --------------------------- portfolio --------------------------- */
-
-function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 20, mass: 0.2 });
-  return (
-    <motion.div
-      style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-ink"
-    />
-  );
-}
-
-function Portfolio() {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <ScrollProgress />
-      <Nav />
-      <main>
-        <Hero />
-        <FocusMarquee />
-        <About />
-        <Academic />
-        <Research />
-        <Skills />
-        <Vision />
-        <Contact />
+        </section>
       </main>
+
       <Footer />
     </div>
   );
