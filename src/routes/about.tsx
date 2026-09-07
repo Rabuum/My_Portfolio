@@ -184,7 +184,7 @@ function AboutPage() {
                   {/* Civil Engineering Image & Key Highlights */}
                   <div className="mt-3 rounded-xl overflow-hidden aspect-[16/7] border border-[#E5E7EB] bg-[#F5F7FA] relative">
                     <img
-                      src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80"
+                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
                       alt="Structural Engineering Research"
                       className="w-full h-full object-cover"
                     />
