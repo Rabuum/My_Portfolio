@@ -257,7 +257,7 @@ export const PORTFOLIO_DATA = {
         "Structured academic research proposal establishing experimental methodologies, sampling protocols, and socio-economic evaluation frameworks to audit commercial cement compliance (OPC 33, 43, and 53 grades) with Nepal Standards (NS: 49:2041).",
       purpose:
         "Lack of transparent quality compliance data between manufacturers and construction contractors creates structural integrity risks. This proposal designed a standardized testing audit to evaluate physical/chemical properties and improve local cement quality.",
-      image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1000&q=80",
+      image: "/cement-moulds-proposal.jpg",
       pdfUrl: "/documents/Proposal_Quality_Assessment_of_Cements_Manufactured_in_Nepal.pdf",
       technologies: [
         "Research Proposal Methodology",
