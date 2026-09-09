@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Layers, Building2, Droplets, FolderCheck, Compass, Sparkles } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
@@ -9,7 +9,7 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
 export const Route = createFileRoute("/skills")({
   head: () => ({
     meta: [
-      { title: "Skills & Software — Rabin Giri | Civil Engineer" },
+      { title: "Skills & Software â€” Rabin Giri | Civil Engineer" },
       {
         name: "description",
         content: "Civil Engineering software skills inventory for Rabin Giri covering AutoCAD, Civil 3D, Revit, ETABS, STAAD Pro, SAP2000, HEC-RAS, HEC-HMS, Primavera P6, MS Project, and ArcGIS.",
@@ -34,7 +34,7 @@ function SkillsPage() {
     <div className="min-h-screen bg-[#F5F7FA] text-[#333333] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-20">
+      <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header Banner with Rich Right-Side Cards */}
           <motion.div
@@ -136,3 +136,4 @@ function SkillsPage() {
     </div>
   );
 }
+

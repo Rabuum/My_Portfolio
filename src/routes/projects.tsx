@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Search, Filter, FolderKanban, Sparkles, Award } from "lucide-react";
@@ -10,7 +10,7 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects — Rabin Giri | Civil Engineer" },
+      { title: "Projects â€” Rabin Giri | Civil Engineer" },
       {
         name: "description",
         content: "Engineering & research project portfolio of Rabin Giri based on empirical laboratory research reports, concrete self-healing experiments, and Nepalese cement quality assessment.",
@@ -52,7 +52,7 @@ function ProjectsPage() {
     <div className="min-h-screen bg-[#F5F7FA] text-[#333333] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-20">
+      <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header Banner with Rich PDF Research Highlights */}
           <motion.div
@@ -184,3 +184,4 @@ function ProjectsPage() {
     </div>
   );
 }
+

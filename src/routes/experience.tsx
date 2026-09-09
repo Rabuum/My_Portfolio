@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   GraduationCap,
@@ -19,7 +19,7 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
 export const Route = createFileRoute("/experience")({
   head: () => ({
     meta: [
-      { title: "Education & Experience — Rabin Giri | Civil Engineer" },
+      { title: "Education & Experience â€” Rabin Giri | Civil Engineer" },
       {
         name: "description",
         content: "Academic degree details and professional engineering timeline for Rabin Giri, Civil Engineering graduate from Nepal.",
@@ -36,7 +36,7 @@ export function MergedEducationExperiencePage() {
     <div className="min-h-screen bg-[#F5F7FA] text-[#333333] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-20">
+      <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header Banner with Rich Right-Side Cards */}
           <motion.div
@@ -296,3 +296,4 @@ export function MergedEducationExperiencePage() {
     </div>
   );
 }
+

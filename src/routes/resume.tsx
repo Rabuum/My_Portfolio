@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Download, FileText, GraduationCap, Briefcase, Wrench, ExternalLink, CheckCircle2 } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
@@ -8,7 +8,7 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
 export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: [
-      { title: "Resume — Rabin Giri Civil Engineer" },
+      { title: "Resume â€” Rabin Giri Civil Engineer" },
       {
         name: "description",
         content: "View and download the official CV / Resume of Rabin Giri, Civil Engineering graduate from Nepal specializing in Water Resources Engineering.",
@@ -25,7 +25,7 @@ function ResumePage() {
     <div className="min-h-screen bg-[#F5F7FA] text-[#333333] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-20">
+      <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header Banner */}
           <motion.div
@@ -122,7 +122,7 @@ function ResumePage() {
                   {experience.map((exp) => (
                     <div key={exp.id} className="border-b border-[#E5E7EB]/60 pb-3 last:border-0 last:pb-0">
                       <div className="text-sm font-bold text-[#0F2D5C]">{exp.role}</div>
-                      <div className="text-xs text-[#4B5563]">{exp.company} · {exp.duration}</div>
+                      <div className="text-xs text-[#4B5563]">{exp.company} Â· {exp.duration}</div>
                     </div>
                   ))}
                 </div>
@@ -155,3 +155,4 @@ function ResumePage() {
     </div>
   );
 }
+

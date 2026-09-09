@@ -52,7 +52,7 @@ function ContactPage() {
       <Toaster position="top-right" richColors />
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-20">
+      <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
           {/* Page Header */}
@@ -60,21 +60,21 @@ function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
             <div className="inline-flex items-center gap-2 rounded-full bg-[#0F2D5C]/10 border border-[#0F2D5C]/20 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-[#0F2D5C] mb-4">
               <Sparkles className="h-3 w-3" />
               <span>Get In Touch</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-[#0F2D5C] font-heading tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F2D5C] font-heading tracking-tight">
               Contact Rabin Giri
             </h1>
-            <p className="mt-3 text-sm sm:text-base text-[#4B5563] max-w-2xl mx-auto leading-relaxed">
-              Open for research collaborations, graduate admissions inquiries, and engineering discussions.
+            <p className="mt-3 text-sm sm:text-base text-[#4B5563] max-w-2xl mx-auto leading-relaxed px-4">
+              Open for research collaborations, graduate admissions inquiries, and engineering discussions. Reach out directly.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
 
             {/* LEFT: Contact Form */}
             <motion.div

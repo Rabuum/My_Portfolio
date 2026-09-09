@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   GraduationCap,
@@ -21,7 +21,7 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Rabin Giri | Civil Engineer" },
+      { title: "About â€” Rabin Giri | Civil Engineer" },
       {
         name: "description",
         content: "Professional summary of Rabin Giri, Civil Engineering graduate specializing in Water Resources Engineering, structural modeling, and hydrology research.",
@@ -38,7 +38,7 @@ function AboutPage() {
     <div className="min-h-screen bg-[#F5F7FA] text-[#333333] flex flex-col font-sans">
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-20">
+      <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header Banner with Rich 2-Column Right Highlights */}
           <motion.div
@@ -132,7 +132,7 @@ function AboutPage() {
                     {profile.name}
                   </h2>
                   <p className="text-xs font-semibold text-[#4B5563] mt-0.5">
-                    {profile.title} · {profile.location}
+                    {profile.title} Â· {profile.location}
                   </p>
                   <p className="mt-3 text-xs text-[#4B5563] leading-relaxed border-t border-[#E5E7EB] pt-3">
                     {profile.bioShort}
@@ -431,3 +431,5 @@ function AboutPage() {
     </div>
   );
 }
+
+
