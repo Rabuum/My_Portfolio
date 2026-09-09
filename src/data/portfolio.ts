@@ -195,7 +195,7 @@ export const PORTFOLIO_DATA = {
         "Experimental research evaluating early-age compressive strength, split tensile recovery, and visual crack sealing efficiency of epoxy resin, encapsulated epoxy (gelatin-gum arabic), gypsum, and fly ash with coconut coir in OPC concrete specimens.",
       purpose:
         "Concrete cracking accelerates steel reinforcement corrosion and reduces structural lifespan. This study investigates affordable, locally accessible self-healing agents in Nepal to autonomously repair micro-cracks and enhance concrete durability.",
-      image: "https://images.unsplash.com/photo-1590274853856-f22d5ee3d228?auto=format&fit=crop&w=1000&q=80",
+      image: "/concrete-slump-test.jpg",
       pdfUrl: "/documents/Evaluation_of_Crack_Sealing_Performance_in_Concrete.pdf",
       technologies: [
         "OPC 43 Grade Cement",
