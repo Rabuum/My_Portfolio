@@ -226,7 +226,7 @@ export const PORTFOLIO_DATA = {
         "Comprehensive laboratory experimentation and field site survey auditing the physical and chemical properties of five major 43-Grade OPC cement brands in Nepal (Shivam, Huaxin, Arghakhanchi, United, and Brij) against Indian and Nepal Bureau of Standards.",
       purpose:
         "Rapid post-earthquake rebuilding in Nepal requires reliable cement quality. Concerns over strength variations and setting times prompted this study to evaluate compliance with standards and assist construction firms in material selection.",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=80",
+      image: "/cement-cube-moulds.jpg",
       pdfUrl: "/documents/Quality_Assessment_of_Different_Cements_in_Nepal.pdf",
       technologies: [
         "Vicat Apparatus (Setting & Consistency)",
