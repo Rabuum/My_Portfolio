@@ -241,9 +241,9 @@ function AboutPage() {
                   {/* Civil Site & Lab Testing Image */}
                   <div className="mt-3 rounded-xl overflow-hidden aspect-[16/7] border border-[#E5E7EB] bg-[#F5F7FA] relative">
                     <img
-                      src="/engineering-blueprint.png"
-                      alt="Engineering Drawing & AutoCAD Drafting"
-                      className="w-full h-full object-cover"
+                      src="/site-inspection-nepal.jpg"
+                      alt="Site Inspection — Construction Quality Control Nepal"
+                      className="w-full h-full object-cover object-top"
                     />
                     <div className="absolute bottom-1.5 left-1.5 bg-[#0F2D5C]/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-xs">
                       Materials Lab & Field Site

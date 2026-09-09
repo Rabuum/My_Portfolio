@@ -195,7 +195,7 @@ export const PORTFOLIO_DATA = {
         "Experimental research evaluating early-age compressive strength, split tensile recovery, and visual crack sealing efficiency of epoxy resin, encapsulated epoxy (gelatin-gum arabic), gypsum, and fly ash with coconut coir in OPC concrete specimens.",
       purpose:
         "Concrete cracking accelerates steel reinforcement corrosion and reduces structural lifespan. This study investigates affordable, locally accessible self-healing agents in Nepal to autonomously repair micro-cracks and enhance concrete durability.",
-      image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1590274853856-f22d5ee3d228?auto=format&fit=crop&w=1000&q=80",
       pdfUrl: "/documents/Evaluation_of_Crack_Sealing_Performance_in_Concrete.pdf",
       technologies: [
         "OPC 43 Grade Cement",
@@ -226,7 +226,7 @@ export const PORTFOLIO_DATA = {
         "Comprehensive laboratory experimentation and field site survey auditing the physical and chemical properties of five major 43-Grade OPC cement brands in Nepal (Shivam, Huaxin, Arghakhanchi, United, and Brij) against Indian and Nepal Bureau of Standards.",
       purpose:
         "Rapid post-earthquake rebuilding in Nepal requires reliable cement quality. Concerns over strength variations and setting times prompted this study to evaluate compliance with standards and assist construction firms in material selection.",
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=80",
       pdfUrl: "/documents/Quality_Assessment_of_Different_Cements_in_Nepal.pdf",
       technologies: [
         "Vicat Apparatus (Setting & Consistency)",
@@ -257,7 +257,7 @@ export const PORTFOLIO_DATA = {
         "Structured academic research proposal establishing experimental methodologies, sampling protocols, and socio-economic evaluation frameworks to audit commercial cement compliance (OPC 33, 43, and 53 grades) with Nepal Standards (NS: 49:2041).",
       purpose:
         "Lack of transparent quality compliance data between manufacturers and construction contractors creates structural integrity risks. This proposal designed a standardized testing audit to evaluate physical/chemical properties and improve local cement quality.",
-      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1000&q=80",
       pdfUrl: "/documents/Proposal_Quality_Assessment_of_Cements_Manufactured_in_Nepal.pdf",
       technologies: [
         "Research Proposal Methodology",
