@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   GraduationCap,
@@ -184,8 +184,8 @@ function AboutPage() {
                   {/* Civil Engineering Image & Key Highlights */}
                   <div className="mt-3 rounded-xl overflow-hidden aspect-[16/7] border border-[#E5E7EB] bg-[#F5F7FA] relative">
                     <img
-                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
-                      alt="Structural Engineering Research"
+                      src="/pokhara-university.png"
+                      alt="Pokhara University — Nepal Engineering College"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute bottom-1.5 left-1.5 bg-[#0F2D5C]/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-xs">
