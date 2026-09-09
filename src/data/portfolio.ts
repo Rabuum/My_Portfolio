@@ -69,7 +69,7 @@ export const PORTFOLIO_DATA = {
     title: "Civil Engineering Graduate",
     subtitle: "Aspiring Water Resources & Hydraulic Engineer",
     location: "Lalitpur, Nepal",
-    email: "nirallunima@gmail.com",
+    email: "rabingiri456@gmail.com",
     phone: "+977 · On Request",
     linkedin: "https://www.linkedin.com/in/rabin-giri-076240363/",
     github: "https://github.com/Rabuum",
@@ -96,7 +96,6 @@ export const PORTFOLIO_DATA = {
     { id: "education", label: "Education", path: "/education" },
     { id: "projects", label: "Projects", path: "/projects" },
     { id: "skills", label: "Skills", path: "/skills" },
-    { id: "certifications", label: "Certifications", path: "/certifications" },
     { id: "contact", label: "Contact", path: "/contact" },
   ],
 

@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, CheckCircle2, Sparkles, Clock, ExternalLink, ArrowRight } from "lucide-react";
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const TARGET_EMAIL = "nirallunima@gmail.com";
+const TARGET_EMAIL = "rabingiri456@gmail.com";
 
 function ContactPage() {
   const { profile } = PORTFOLIO_DATA;
