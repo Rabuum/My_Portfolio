@@ -69,7 +69,7 @@ function AboutPage() {
                     About Me
                   </h1>
                   <p className="mt-2 text-xs sm:text-sm text-[#4B5563] leading-relaxed">
-                    Civil Engineering graduate from Pokhara University (CGPA 3.41) concentrating in Water Resources Engineering, hydrology, structural modeling in ETABS & SAP2000, and GIS watershed analysis. Currently preparing for M.Sc. studies in Germany under the DAAD track.
+                    Civil engineer by degree, water enthusiast by calling. I grew up in Nepal surrounded by rivers that flood, fail, and flow with extraordinary force — and that's exactly why I chose this field. After completing my B.E. at Nepal Engineering College (CGPA 3.41) with a focus on hydraulics and structural analysis, I'm now working toward a future in water resources research, with Germany as my next chapter.
                   </p>
                 </div>
 

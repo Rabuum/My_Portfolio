@@ -54,21 +54,21 @@ export function ProjectCard({ project, featured }: ProjectCardProps) {
           </div>
 
           {/* Title & Short Description */}
-          <h3 className="mt-4 text-base font-bold text-[#0F2D5C] group-hover:text-[#2E5BFF] transition-colors leading-snug font-heading">
+          <h3 className="mt-4 text-sm font-bold text-[#0F2D5C] group-hover:text-[#2E5BFF] transition-colors leading-snug font-heading">
             {project.title}
           </h3>
-          <p className="mt-2 text-xs text-[#4B5563] leading-relaxed line-clamp-3">
+          <p className="mt-2 text-[11px] text-[#4B5563] leading-relaxed">
             {project.description}
           </p>
 
           {/* Problem / Purpose Callout */}
           {project.purpose && (
-            <div className="mt-3 rounded-xl bg-[#F5F7FA] border border-[#E5E7EB] p-2.5 text-[11px] text-[#333333]">
-              <div className="flex items-center gap-1.5 font-bold text-[#0F2D5C] mb-0.5">
-                <Target className="h-3.5 w-3.5 text-[#2E5BFF] shrink-0" />
-                <span>Problem & Research Purpose</span>
+            <div className="mt-3 rounded-xl bg-[#F5F7FA] border border-[#E5E7EB] p-2.5">
+              <div className="flex items-center gap-1.5 font-bold text-[#0F2D5C] mb-1">
+                <Target className="h-3 w-3 text-[#2E5BFF] shrink-0" />
+                <span className="text-[10px] uppercase tracking-wider">Problem & Research Purpose</span>
               </div>
-              <p className="text-[#4B5563] line-clamp-2 leading-relaxed text-[11px]">
+              <p className="text-[#4B5563] leading-relaxed text-[10px]">
                 {project.purpose}
               </p>
             </div>
@@ -76,11 +76,12 @@ export function ProjectCard({ project, featured }: ProjectCardProps) {
 
           {/* Key Deliverables / Empirical Findings */}
           {project.features && project.features.length > 0 && (
-            <div className="mt-3.5 space-y-1.5 pt-3 border-t border-[#E5E7EB]">
-              {project.features.slice(0, 2).map((feat, idx) => (
-                <div key={idx} className="flex items-start gap-2 text-xs text-[#333333]">
-                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#2E5BFF] mt-0.5" />
-                  <span className="line-clamp-1 text-[11px]">{feat}</span>
+            <div className="mt-3 space-y-1.5 pt-3 border-t border-[#E5E7EB]">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-[#0F2D5C] mb-1.5">Key Findings</p>
+              {project.features.slice(0, 3).map((feat, idx) => (
+                <div key={idx} className="flex items-start gap-1.5 text-[10px] text-[#333333]">
+                  <CheckCircle2 className="h-3 w-3 shrink-0 text-[#2E5BFF] mt-0.5" />
+                  <span className="leading-relaxed">{feat}</span>
                 </div>
               ))}
             </div>
@@ -107,6 +108,7 @@ export function ProjectCard({ project, featured }: ProjectCardProps) {
 
           <div className="flex items-center justify-between gap-2">
             {/* Direct PDF Download / View Link */}
+            {project.pdfUrl ? (
             <a
               href={project.pdfUrl}
               target="_blank"
@@ -117,6 +119,7 @@ export function ProjectCard({ project, featured }: ProjectCardProps) {
               <Download className="h-3.5 w-3.5" />
               <span>Download PDF</span>
             </a>
+            ) : <div />}
 
             <button
               onClick={() => setModalOpen(true)}
@@ -268,6 +271,7 @@ export function ProjectCard({ project, featured }: ProjectCardProps) {
 
               {/* Action Bar with PDF Links */}
               <div className="mt-6 pt-4 border-t border-[#E5E7EB] flex flex-wrap items-center justify-between gap-3">
+                {project.pdfUrl ? (
                 <div className="flex items-center gap-2">
                   <a
                     href={project.pdfUrl}
@@ -288,6 +292,7 @@ export function ProjectCard({ project, featured }: ProjectCardProps) {
                     <span>Download PDF</span>
                   </a>
                 </div>
+                ) : null}
 
                 <button
                   onClick={() => setModalOpen(false)}

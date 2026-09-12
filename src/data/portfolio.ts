@@ -76,9 +76,9 @@ export const PORTFOLIO_DATA = {
     resumePdf: "/Rabin_Giri_Resume.pdf",
     image: "/rabin-giri.png",
     bioShort:
-      "I am a Civil Engineering graduate with a strong academic background and hands-on experience in construction management and hydraulics research. I am passionate about water resources engineering and sustainable infrastructure development.",
+      "Born and raised in Nepal, I am a Civil Engineering graduate who has always been drawn to the way water shapes landscapes and communities. From spending hours in the materials lab testing concrete specimens to standing on construction sites watching structures rise from the ground up, every experience has deepened my commitment to building resilient infrastructure for a changing climate. My heart is set on water resources engineering — not just as a career, but as a way to give back to a country where rivers are life.",
     bioLong:
-      "Graduating with a B.E. in Civil Engineering from Nepal Engineering College, Pokhara University (CGPA 3.41), my technical expertise spans concrete self-healing research, commercial cement quality testing, structural analysis, and hydraulic engineering. My career vision focuses on advanced water resources engineering and flood mitigation, with an active trajectory towards Master's research in Germany (DAAD track).",
+      "I graduated with a B.E. in Civil Engineering from Nepal Engineering College, Pokhara University with a CGPA of 3.41 — a result of years of late nights, lab experiments, and genuine curiosity about how things are built to last. My undergraduate journey took me from mixing concrete specimens with self-healing agents to surveying construction sites in Kathmandu Valley, and every step reinforced the same belief: good engineering can quietly change lives. Now, I am channeling that passion toward water resources — studying HEC-RAS hydraulics, GIS catchment modeling, and preparing a research path toward an M.Sc. in Germany. Nepal has some of the most powerful rivers in the world, and I want to be part of the generation that harnesses them wisely.",
     stats: [
       { label: "B.E. Civil", value: "Pokhara Univ", sub: "CGPA 3.41 / 4.00" },
       { label: "Major Research", value: "3 Thesis Papers", sub: "Empirical & Lab PDFs" },
@@ -258,7 +258,7 @@ export const PORTFOLIO_DATA = {
       purpose:
         "Lack of transparent quality compliance data between manufacturers and construction contractors creates structural integrity risks. This proposal designed a standardized testing audit to evaluate physical/chemical properties and improve local cement quality.",
       image: "/cement-moulds-proposal.jpg",
-      pdfUrl: "/documents/Proposal_Quality_Assessment_of_Cements_Manufactured_in_Nepal.pdf",
+      pdfUrl: "",
       technologies: [
         "Research Proposal Methodology",
         "Nepal Standards (NS: 49:2041)",
