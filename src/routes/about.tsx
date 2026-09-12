@@ -69,7 +69,10 @@ function AboutPage() {
                     About Me
                   </h1>
                   <p className="mt-2 text-xs sm:text-sm text-[#4B5563] leading-relaxed">
-                    Civil engineer by degree, water enthusiast by calling. I grew up in Nepal surrounded by rivers that flood, fail, and flow with extraordinary force � and that's exactly why I chose this field. After completing my B.E. at Nepal Engineering College (CGPA 3.41) with a focus on hydraulics and structural analysis, I'm now working toward a future in water resources research, with Germany as my next chapter.
+                    I’m a civil engineer with a strong interest in water resources and the way water shapes communities and landscapes. Growing up in Nepal, I’ve seen firsthand both the importance and the challenges of our rivers, which inspired my interest in hydraulics and water related engineering.
+
+I completed my B.E. in Civil Engineering from Nepal Engineering College with a CGPA of 3.41, focusing on hydraulics, water resources, and structural analysis. I’m now looking to take my journey further through research in water resources and hydrology, with Germany as the next chapter of my academic journey.
+
                   </p>
                 </div>
 
