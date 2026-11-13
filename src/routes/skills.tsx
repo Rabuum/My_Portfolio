@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Layers, Building2, Droplets, FolderCheck, Compass, Sparkles } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
@@ -9,10 +9,10 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
 export const Route = createFileRoute("/skills")({
   head: () => ({
     meta: [
-      { title: "Skills & Software â€” Rabin Giri | Civil Engineer" },
+      { title: "Skills & Software — Rabin Giri | Civil Engineer" },
       {
         name: "description",
-        content: "Civil Engineering software skills inventory for Rabin Giri covering AutoCAD, Civil 3D, Revit, ETABS, STAAD Pro, SAP2000, HEC-RAS, HEC-HMS, Primavera P6, MS Project, and ArcGIS.",
+        content: "Civil Engineering software skills inventory for Rabin Giri covering AutoCAD, Civil 3D, ETABS, HEC-HMS, MS Project, and ArcGIS.",
       },
     ],
   }),
@@ -66,7 +66,7 @@ function SkillsPage() {
                   </div>
                   <div>
                     <div className="text-[11px] font-bold uppercase text-[#6B7280]">Total Proficiency</div>
-                    <div className="text-xs font-bold text-[#0F2D5C]">15+ Engineering Tools</div>
+                    <div className="text-xs font-bold text-[#0F2D5C]">10+ Engineering Tools</div>
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@ function SkillsPage() {
                   </div>
                   <div>
                     <div className="text-[11px] font-bold uppercase text-[#6B7280]">Water & GIS</div>
-                    <div className="text-xs font-bold text-[#0F2D5C]">HEC-RAS, HEC-HMS, ArcGIS</div>
+                    <div className="text-xs font-bold text-[#0F2D5C]">HEC-HMS, ArcGIS, QGIS</div>
                   </div>
                 </div>
               </div>

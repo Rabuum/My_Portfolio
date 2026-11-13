@@ -278,7 +278,7 @@ function ContactPage() {
                   Open for Admissions & Research Collaboration
                 </h4>
                 <p className="mt-2 text-xs text-white/70 leading-relaxed">
-                  Applying for M.Sc. programs in Germany (DAAD track) — Water Resources Engineering, Hydraulic Modeling & Hydrology.
+                  Applying for M.Sc. programs in Germany — Water Resources Engineering, Hydraulic Modeling & Hydrology.
                 </p>
               </div>
             </motion.div>

@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Search, Filter, FolderKanban, Sparkles, Award } from "lucide-react";
@@ -153,8 +153,8 @@ function ProjectsPage() {
           {/* Projects Grid */}
           {filteredProjects.length > 0 ? (
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-              {filteredProjects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} featured={index < 2} />
+              {filteredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} featured={project.featured} />
               ))}
             </div>
           ) : (

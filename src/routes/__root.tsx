@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Academic portfolio of Rabin Giri, a Civil Engineer from Nepal preparing for a Master's in Water Resources Engineering in Germany. Research, technical expertise, and career vision.",
       },
       { name: "author", content: "Rabin Giri" },
-      { name: "keywords", content: "Rabin Giri, Civil Engineer, Water Resources Engineering, Nepal, Germany Master's, DAAD, Hydrology, Hydraulic Engineering, Self-Healing Concrete" },
+      { name: "keywords", content: "Rabin Giri, Civil Engineer, Water Resources Engineering, Nepal, Germany Master's, Hydrology, Hydraulic Engineering, Self-Healing Concrete" },
       { property: "og:title", content: "Rabin Giri — Civil Engineer · Water Resources Researcher" },
       { property: "og:description", content: "Academic portfolio of Rabin Giri, a Civil Engineer from Nepal preparing for a Master's in Water Resources Engineering in Germany. Research, technical expertise, and career vision." },
       { property: "og:type", content: "website" },

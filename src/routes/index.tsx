@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   User,
@@ -16,6 +16,9 @@ import {
   Building2,
   FileText,
   Mail,
+  BookOpen,
+  Calendar,
+  Clock,
 } from "lucide-react";
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
@@ -38,8 +41,9 @@ export const Route = createFileRoute("/")({
 });
 
 function LandingPage() {
-  const { profile, projects } = PORTFOLIO_DATA;
+  const { profile, projects, blogPosts } = PORTFOLIO_DATA;
   const featuredProjects = projects.slice(0, 3);
+  const featuredBlogs = (blogPosts || []).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-[#F5F7FA] text-[#333333] flex flex-col font-sans selection:bg-[#0F2D5C] selection:text-white">
@@ -186,8 +190,8 @@ function LandingPage() {
                 {[
                   { icon: GraduationCap, title: "B.E. Civil Graduate", sub: "Pokhara Univ (CGPA 3.41)" },
                   { icon: Briefcase, title: "Site & Lab Experience", sub: "Quality Control & Concrete Thesis" },
-                  { icon: Droplets, title: "Water Resources", sub: "Hydrology & HEC-RAS 2D" },
-                  { icon: Target, title: "Target Trajectory", sub: "M.Sc. Germany (DAAD Track)" },
+                  { icon: Droplets, title: "Water Resources", sub: "Hydrology & Hydraulics" },
+                  { icon: Target, title: "Target Trajectory", sub: "Germany M.Sc." },
                 ].map(({ icon: Icon, title, sub }) => (
                   <div key={title} className="rounded-2xl border border-[#E5E7EB] bg-[#F5F7FA]/70 p-4 transition-all hover:border-[#0F2D5C]/40 hover:bg-white hover:shadow-md">
                     <div className="flex items-center gap-3">
@@ -223,8 +227,8 @@ function LandingPage() {
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { icon: Droplets, title: "Water Resources", desc: "Hydrology, HEC-RAS river modeling, ogee spillway design, and flood inundation mapping." },
-                { icon: Building2, title: "Structural Engineering", desc: "3D ETABS modeling, STAAD Pro frame analysis, seismic lateral load calculations, and NBC code compliance." },
+                { icon: Droplets, title: "Water Resources", desc: "Hydrology, river hydraulic modeling, ogee spillway design, and flood inundation mapping." },
+                { icon: Building2, title: "Structural Engineering", desc: "3D ETABS modeling, structural frame analysis, seismic lateral load calculations, and NBC code compliance." },
                 { icon: Compass, title: "GIS Watershed Mapping", desc: "ArcGIS spatial analysis, DEM processing, stream network delineation, and catchment slope mapping." },
                 { icon: Wrench, title: "Construction Management", desc: "Quantity estimation (BOQ), site quality assurance, concrete slump testing, and AutoCAD drafting." },
               ].map(({ icon: Icon, title, desc }) => (
@@ -291,7 +295,7 @@ function LandingPage() {
 
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard key={project.id} project={project} featured={project.featured} />
               ))}
             </div>
 
@@ -307,7 +311,100 @@ function LandingPage() {
           </div>
         </section>
 
-        {/* ================= 6. CTA SECTION ================= */}
+        {/* ================= 6. BLOG & TECHNICAL ARTICLES ================= */}
+        <section id="blog" className="py-12 md:py-16 lg:py-20 border-b border-[#E5E7EB] bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 border-b border-[#E5E7EB] pb-4">
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-widest text-[#0F2D5C]">
+                  TECHNICAL PUBLICATIONS
+                </span>
+                <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#0F2D5C] font-heading">
+                  Latest Research & Blog Articles
+                </h2>
+              </div>
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0F2D5C] hover:text-[#2E5BFF] whitespace-nowrap"
+              >
+                <span>Read All Articles</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredBlogs.map((post) => (
+                <div
+                  key={post.id}
+                  className="rounded-2xl border border-[#E5E7EB] bg-white overflow-hidden shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group"
+                >
+                  <a href={`/blog?post=${encodeURIComponent(post.id)}`} className="block">
+                    <div className="relative h-44 w-full bg-[#F5F7FA] overflow-hidden">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-block rounded-md bg-white/95 backdrop-blur-xs px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0F2D5C] shadow-2xs border border-[#E5E7EB]">
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 text-[11px] text-[#6B7280]">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {post.date}
+                        </span>
+                        <span>•</span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          {post.readTime}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-2.5 text-base font-bold text-[#0F2D5C] font-heading group-hover:text-[#2E5BFF] transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
+
+                      <p className="mt-2 text-xs text-[#4B5563] leading-relaxed line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                  </a>
+
+                  <div className="px-5 pb-5 pt-3 border-t border-[#F3F4F6] flex items-center justify-between">
+                    <span className="text-[11px] font-medium text-[#6B7280]">
+                      By {post.author}
+                    </span>
+                    <a
+                      href={`/blog?post=${encodeURIComponent(post.id)}`}
+                      className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#0F2D5C] hover:text-[#2E5BFF] transition-colors"
+                    >
+                      <span>Read Article</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#0F2D5C] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-[#1A3D74] transition-all"
+              >
+                <BookOpen className="h-4 w-4" />
+                <span>Explore Full Engineering Blog</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= 7. CTA SECTION ================= */}
         <section id="cta" className="py-12 md:py-16 lg:py-20 bg-[#F5F7FA]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl border border-[#E5E7EB] bg-[#0F2D5C] p-6 sm:p-8 md:p-12 text-white shadow-xl">

@@ -94,7 +94,7 @@ export function Footer() {
                 <strong className="text-[#333333]">Location:</strong> {PORTFOLIO_DATA.profile.location}
               </li>
               <li>
-                <strong className="text-[#333333]">Status:</strong> B.E. Graduate · DAAD Scholar Track
+                <strong className="text-[#333333]">Status:</strong> B.E. Graduate · Germany M.Sc. Track
               </li>
             </ul>
           </div>

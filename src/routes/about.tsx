@@ -104,7 +104,7 @@ I completed my B.E. in Civil Engineering from Nepal Engineering College with a C
                     </div>
                     <div>
                       <div className="text-[11px] font-bold uppercase text-[#6B7280]">Target Career</div>
-                      <div className="text-xs font-bold text-[#0F2D5C]">Germany M.Sc. DAAD Track</div>
+                      <div className="text-xs font-bold text-[#0F2D5C]">Germany M.Sc.</div>
                     </div>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ I completed my B.E. in Civil Engineering from Nepal Engineering College with a C
             </div>
           </motion.div>
 
-          {/* Split Layout: Profile Image Card Left & 4 Rich Cards Right */}
+          {/* Split Layout: Profile Image Card Left & 3 Rich Cards Right */}
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             {/* Left Column: Split Layout Profile Summary Card */}
             <motion.div
@@ -279,7 +279,7 @@ I completed my B.E. in Civil Engineering from Nepal Engineering College with a C
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="sm:col-span-2 rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-3">
@@ -296,86 +296,33 @@ I completed my B.E. in Civil Engineering from Nepal Engineering College with a C
                     Specialized focus on hydraulic engineering, dam spillway calculations, ETABS structural modeling, and GIS watershed delineation.
                   </p>
 
-                  {/* Water Resources & Hydraulic Spillway Image */}
-                  <div className="mt-3 rounded-xl overflow-hidden aspect-[16/7] border border-[#E5E7EB] bg-[#F5F7FA] relative">
-                    <img
-                      src="/water-dam.png"
-                      alt="Hydropower Dam — Water Resources & Hydraulic Engineering"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-1.5 left-1.5 bg-[#0F2D5C]/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-xs">
-                      Water Resources & Hydraulics
-                    </div>
-                  </div>
-
-                  <div className="mt-3 space-y-1.5 text-xs text-[#4B5563]">
-                    {profile.interests.map((interest) => (
-                      <div key={interest} className="flex items-center gap-2">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-[#2E5BFF] shrink-0" />
-                        <span className="text-[11px]">{interest}</span>
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
+                    {/* Water Resources & Hydraulic Spillway Image */}
+                    <div className="rounded-xl overflow-hidden aspect-[16/7] border border-[#E5E7EB] bg-[#F5F7FA] relative">
+                      <img
+                        src="/water-dam.png"
+                        alt="Hydropower Dam — Water Resources & Hydraulic Engineering"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute bottom-1.5 left-1.5 bg-[#0F2D5C]/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-xs">
+                        Water Resources & Hydraulics
                       </div>
-                    ))}
+                    </div>
+
+                    <div className="space-y-1.5 text-xs text-[#4B5563]">
+                      {profile.interests.map((interest) => (
+                        <div key={interest} className="flex items-center gap-2">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-[#2E5BFF] shrink-0" />
+                          <span className="text-[11px]">{interest}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-[#E5E7EB]">
                   <Link to="/skills" className="text-xs font-bold text-[#2E5BFF] hover:underline flex items-center gap-1">
                     <span>Explore Software Tools</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
-              </motion.div>
-
-              {/* Card 4: Graduate Research Track */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.25 }}
-                className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-3">
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#F5F7FA] text-[#0F2D5C] border border-[#E5E7EB]">
-                      <Target className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-bold text-[#0F2D5C]">Graduate Research Track</h3>
-                      <span className="text-[11px] font-semibold text-[#2E5BFF]">Germany M.Sc.</span>
-                    </div>
-                  </div>
-
-                  <p className="mt-3 text-xs text-[#4B5563] leading-relaxed">
-                    Targeted focus on climate-resilient hydraulic structures, watershed management, and sustainable water resources engineering under DAAD track.
-                  </p>
-
-                  {/* Sustainable Infrastructure Image */}
-                  <div className="mt-3 rounded-xl overflow-hidden aspect-[16/7] border border-[#E5E7EB] bg-[#F5F7FA] relative">
-                    <img
-                      src="/river-dam-nepal.jpg"
-                      alt="Nepal River Dam — Hydraulic Engineering & Water Resources Research"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-1.5 left-1.5 bg-[#0F2D5C]/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-xs">
-                      DAAD M.Sc. Candidate Track
-                    </div>
-                  </div>
-
-                  <ul className="mt-3 space-y-1.5 text-xs text-[#333333]">
-                    <li className="flex items-start gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-[#2E5BFF] shrink-0 mt-0.5" />
-                      <span className="text-[11px]">Climate-Resilient Hydraulic Infrastructure</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-[#2E5BFF] shrink-0 mt-0.5" />
-                      <span className="text-[11px]">Hydrological GIS Catchment Simulation</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[#E5E7EB]">
-                  <Link to="/contact" className="text-xs font-bold text-[#2E5BFF] hover:underline flex items-center gap-1">
-                    <span>Initiate Academic Inquiry</span>
                     <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>

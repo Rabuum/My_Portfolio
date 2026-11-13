@@ -1,4 +1,4 @@
-﻿import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Download, Menu, X, Building2 } from "lucide-react";
 import { PORTFOLIO_DATA } from "../../data/portfolio";
@@ -46,7 +46,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation Menu */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+        <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
           {PORTFOLIO_DATA.nav.map((item) => {
             const isActive = currentPath === item.path;
             return (
